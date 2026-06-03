@@ -1,0 +1,48 @@
+"use client";
+import React, { useRef, useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+
+export default function MagneticButton({ 
+  children, 
+  className = "",
+  onClick 
+}: { 
+  children: React.ReactNode; 
+  className?: string;
+  onClick?: () => void;
+}) {
+  const ref = useRef<HTMLButtonElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouse = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const { clientX, clientY } = e;
+    const { height, width, left, top } = ref.current!.getBoundingClientRect();
+    const middleX = clientX - (left + width / 2);
+    const middleY = clientY - (top + height / 2);
+    setPosition({ x: middleX * 0.3, y: middleY * 0.3 }); // 0.3 is the pull strength
+  };
+
+  const reset = () => {
+    setPosition({ x: 0, y: 0 });
+  };
+
+  return (
+    <motion.button
+      ref={ref}
+      onMouseMove={handleMouse}
+      onMouseLeave={reset}
+      animate={{ x: position.x, y: position.y }}
+      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      className={className}
+      onClick={onClick}
+    >
+      <motion.span
+        animate={{ x: position.x * 0.5, y: position.y * 0.5 }}
+        transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+        className="inline-flex items-center gap-3 whitespace-nowrap"
+      >
+        {children}
+      </motion.span>
+    </motion.button>
+  );
+}

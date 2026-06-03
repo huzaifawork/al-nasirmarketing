@@ -1,0 +1,273 @@
+Navigation Links (left-to-right)
+•    Established badge: small italic text 'Est. 1994' beneath the logo
+•    Two-tone: Sea Green icon + Navy wordmark
+•    Custom logotype — agency name in bold Helvetica-style font with a geometric arrow/billboard icon
+Logo
+scroll. Inspired by the Sahar Advertising header reference image — clean, minimal, professional.
+The header is fixed/sticky, transparent over the hero and transitions to a solid deep-navy background on
+02 · HEADER & NAVIGATION
+Scroll Behavior                         Smooth single-page scroll with animated section transitions
+Backend / DB                            Supabase — Auth, Database, Storage for admin uploads
+Framework                                React (Next.js recommended) with Tailwind CSS
+Brand Color Palette                 accents
+#496B88 (Steel Blue) · #2EAB8C (Sea Green) · #1B2A4A (Deep Navy) · White
+Established                               Since 1994 — to be featured prominently in hero section
+Project Type                             Single-Page Website + Admin Dashboard + Dynamic Presence Sub-pages
+and UGC ads — with an admin-controlled Presence gallery and a full Supabase-powered dashboard.
+billboard/OOH services alongside digital offerings — social media marketing, SEO, AI-driven strategies,
+outdoor advertising & digital marketing agency established since 1994. The site will showcase
+This document outlines every design and development decision for a premium single-page website for an
+01 · PROJECT OVERVIEW
+#1B2A4A · Deep Navy                     + Presence Sub-pages                    Tailwind CSS
+#2EAB8C · Sea Green                     with Admin Dashboard                     Supabase (DB + Auth)
+#496B88 · Navy Blue                       Single-Page Application                   React / Next.js
+THEME COLORS                                  TYPE                                                      TECH STACK
+Comprehensive Development & Design Blueprint
+MARKETING WEBSITE
+OUTDOOR & DIGITAL
+----------------Page (0) Break----------------
+Layout (Two-Column on Desktop)
+on the left, rich text content on the right. Adapted for this agency with modern motion design.
+Design inspired by the Arrows Advertising reference image: dark background, Pakistan map with city pins
+04 · ABOUT US
+•    On carousel change: text fades out then reanimates for next slide
+•    Label fades in at 0.3s · H1 slides up at 0.6s · Subline at 0.9s · CTA at 1.2s
+Animation Sequence
+•    CTA Button: 'Explore Our Work' — sea-green fill, white text, hover lifts with shadow
+•    Subline: 'Established Since 1994' in medium weight, light gray
+•    H1 Hero Headline: large (72–96px) bold white text, e.g. agency name or core tagline
+fade+slide-up
+•    Small ALL-CAPS label: 'MARKETING REDEFINED' — sea-green color, letter-spacing 0.3em,
+Foreground Text (animated, staggered entrance)
+•    Images auto-transition with 1s crossfade; manual dots at bottom
+slow rotation/drift animation
+•    Floating blurred SVG icons (Instagram, Facebook, billboard outline, signal tower) — opacity 8–12%,
+•    Carousel images at full viewport width/height with 30% dark overlay gradient
+Background Layer
+floating background icons that do NOT dominate the frame.
+auto-advances every 5 seconds with a Ken Burns zoom effect. The foreground contains animated text and
+The hero occupies 100vh. A carousel of 4–5 high-quality images (billboards, city scenes, digital screens)
+03 · HERO SECTION — FULL-SCREEN CAROUSEL
+•    Mobile: hamburger menu with full-screen slide-in overlay
+•    Active link highlighted with sea-green underline animation
+•    Transparent on hero · Frosted-glass blur on scroll with navy/sea-green border bottom
+Header Behavior
+•    Contact Us
+•    Team
+•    Presence
+•    Clients
+•    Services (dropdown)
+•    About Us
+•    Home
+----------------Page (1) Break----------------
+•    Three stat counters: Years Active · Cities · Campaigns Delivered — animated count-up
+•    Company mission paragraph
+•    Founder story paragraph with a subtle quote highlight (left border sea-green)
+Text Content
+•    Head Office pin: Sea Green · Branches: Navy · Liaison: Gold
+•    Hover on pin: tooltip with city name + office type (HQ / Branch / Liaison)
+•    Animated pin drop for each city — staggered 0.2s each
+•    SVG Pakistan outline map (or city-specific region map)
+Map Component
+•    Background: deep navy (#1B2A4A) with subtle diagonal pattern overlay
+•    RIGHT (55%): Founder bio, company story, core values
+•    LEFT (45%): Interactive SVG/image map of operational cities — pins animate in on scroll
+----------------Page (2) Break----------------
+automation, and performance optimization.
+7    Leveraging AI tools for ad creative generation, audience segmentation, predictive analytics, chatbot
+0    AI-Driven Marketing Strategies
+ranking reports.
+6    Technical SEO audits, on-page optimization, backlink building, local SEO for Pakistan markets, and monthly
+0    SEO Optimization
+traditional creative in cost-per-result.
+5    User-Generated Content ad production and deployment. Authentic creator-style ads that outperform
+0    UGC Ads
+brand voice consistency.
+4    End-to-end community management: content calendar, posting, engagement monitoring, reporting, and
+0    Social Media Management
+strategy from awareness to conversion.
+3    Paid and organic campaigns across Facebook, Instagram, TikTok, LinkedIn, and YouTube. Full funnel
+0    Social Media Marketing
+dayparting scheduling, and audience targeting.
+2    High-brightness LED and SMD screen networks for dynamic content delivery. Real-time content updates,
+0    SMD / LED Digital Screens
+selection, design production, and campaign monitoring included.
+1    Strategic placement of static, backlit, and digital billboards across prime locations in major cities. Site
+0    Outdoor Billboard Advertising
+Service Cards (7 total)
+•    Progress indicator: vertical dots or line on the right side
+•    Card entrance: slide up + fade + slight rotation correction (3deg → 0deg)
+•    Each card: full-width or near-full-width, alternating image left / right
+•    Section is pinned (sticky scroll) — cards stack and reveal one at a time
+Interaction Pattern: Stacked Scroll Cards
+layered depth effect — similar to Apple product pages.
+as the user scrolls, each service card slides into view and partially overlaps the previous, creating a
+The Services section must be visually competitive and memorable. Use an overlapping-card scroll pattern:
+05 · SERVICES — EXCEPTIONAL DESIGN
+----------------Page (3) Break----------------
+•    Masonry or grid gallery of all billboard/placement images for that city
+•    Hero: city name + number of placements
+•    Route: /presence/[city-slug] — e.g. /presence/lahore
+City Sub-page (Dynamic Route)
+•    Entrance: staggered fade-slide-up per tile on scroll
+•    Hover: image scales 105%, overlay darkens, 'View Gallery' CTA appears
+•    Campaign count badge top-right: e.g. '12 Campaigns'
+•    City name in white bold text, bottom-left
+•    Each tile: full-bleed city/campaign photo, dark gradient overlay at bottom
+•    Grid: 3 columns desktop · 2 tablet · 1 mobile
+Tile Design
+Next.js dynamic routes).
+name overlaid. Clicking a tile opens a dedicated sub-page using conditional rendering (React Router /
+A dynamic, admin-managed gallery of cities where the agency operates. Displayed as image tiles with city
+08 · PRESENCE — CITY TILES
+•    Background: white or very light gray for maximum contrast
+•    Client name appears as tooltip or caption below logo on hover
+•    All logos grayscale by default → full color on hover
+•    Row 2: Infinite scrolling logo marquee — left scroll, hover pauses
+•    Row 1: Static featured logos in a 4–5 column grid — fade in on scroll
+•    Section heading: 'Brands That Trust Us' in navy, centered
+animate in with stagger and continuously scroll in a marquee on a second row.
+A clean, brand-logo-focused section. No distracting background — let the client logos speak. Logos
+07 · CLIENTS SECTION
+•    Two strips can be placed: one after Services, one before Presence
+•    Gap between images: 16px · Speed: 30s for full cycle
+•    Images: 300×200px thumbnails, slight rounded corners, slight shadow
+•    Auto-scrolling image strip — infinite loop, pausable on hover
+breaks the text-heavy layout.
+billboards, campaigns, and city placements scroll infinitely left. This serves as visual proof-of-work and
+Between major sections, insert a full-width horizontal image marquee strip. High-resolution photos of
+06 · MEDIA STRIP — BETWEEN SECTIONS
+----------------Page (4) Break----------------
+•    Table: presence_images (id, city_id, image_url, caption, sort_order)
+•    Table: presence_cities (id, name, slug, cover_image, created_at)
+•    Supabase Storage bucket: presence-images
+•    Admin selects city → uploads images → sets captions → publishes
+Admin Upload (Supabase)
+•    All images uploaded and managed by admin via Supabase Storage
+•    Back button returns to main page Presence section
+----------------Page (5) Break----------------
+•    Office addresses: Lahore (HQ), Karachi, Islamabad
+•    4-column layout: Logo + tagline · Quick Links · Services · Contact + Social
+•    Background: Deep navy (#1B2A4A)
+11 · FOOTER
+•    Form data also stored in Supabase table: contact_submissions
+•    Integration: EmailJS (client-side) OR Supabase Edge Function → SMTP
+•    Submit button: sea-green, animates to checkmark on success
+•    Service dropdown options: Billboard · SMD · Social Media · SEO · AI Strategy · Other
+•    Fields: Full Name · Company · Email · Phone · Service Interest (dropdown) · Message
+Email Form (Right)
+•    Google Maps embed (Lahore office)
+•    Social media icon links: LinkedIn, Instagram, YouTube, Facebook
+•    Email address with mailto link
+•    Phone numbers (Lahore HQ, Karachi, Islamabad)
+•    Head Office address with icon
+Contact Info (Left)
+•    Background: Deep navy with sea-green geometric accent shapes
+•    Two-column: LEFT = contact info + map embed · RIGHT = form
+Layout
+email using EmailJS or a Supabase Edge Function + SMTP.
+A visually engaging contact section with a functional email form. Form submissions send to the agency's
+10 · CONTACT US
+•    Background: subtle dark navy gradient to differentiate from adjacent sections
+•    Section header: 'The People Behind the Work' — animated character reveal
+•    Role badge: color-coded — Leadership: Navy · Creative: Sea Green · Digital: Gold
+•    Hover: Card flips (CSS 3D) — back shows LinkedIn link + fun fact
+•    Card: Photo (circle crop with sea-green border), Name, Role, short quote
+•    Layout: Horizontal scrollable cards on mobile · 3-col grid on desktop
+design with role color-coding and micro-animations.
+Interactive and beautiful team showcase. Avoid the typical boring grid of headshots. Use a layered card
+09 · TEAM SECTION
+----------------Page (6) Break----------------
+Media Strip
+Infinite CSS marquee · pause on hover
+Service Cards
+Sticky scroll stack · slide-up + rotation correct on enter
+Stat Counters
+Count-up from 0 on scroll entry · 1.5s duration
+About Map Pins
+Drop animation staggered 0.2s each on scroll entry
+Background Icons
+Slow orbit/drift · opacity 8–12% · blur filter
+Hero Carousel
+5s auto-advance · 1s crossfade · Ken Burns zoom
+Hero Text
+Staggered fade+slide-up · letter-by-letter for tagline
+Use Framer Motion (React) or GSAP for all animations:
+13 · ANIMATIONS & EFFECTS REFERENCE
+•    Site Settings: edit hero carousel images · update taglines · about text
+•    Contact Inbox: view submissions · mark as read · export CSV
+•    Team Manager: add/edit team members · upload photos
+•    Client Manager: upload logos · toggle featured · set display order
+•    Presence Manager: add/edit/delete cities · drag-to-reorder tiles · upload images
+•    Dashboard home: stats (contacts today, cities, clients, team members)
+Admin Panel Features
+•    site_settings: id, key, value (for tagline, hero images, about text etc.)
+is_read
+•    contact_submissions: id, name, company, email, phone, service_interest, message, created_at,
+•    team_members: id, name, role, department, photo_url, quote, linkedin_url, fun_fact, sort_order
+•    clients: id, name, logo_url, website_url, is_featured, sort_order
+•    presence_images: id, city_id, image_url, caption, sort_order, created_at
+•    presence_cities: id, name, slug, cover_image_url, sort_order, created_at
+Supabase Database Schema
+Auth with email/password login.
+A protected admin panel (separate route /admin) for managing all dynamic content. Secured by Supabase
+12 · ADMIN DASHBOARD — SUPABASE
+•    Thin sea-green top border on footer
+•    Bottom bar: © 2025 [Agency Name]. All rights reserved. | Privacy Policy
+•    Social icons: LinkedIn, Instagram, YouTube, Facebook — hover turns sea-green
+----------------Page (7) Break----------------
+Email
+EmailJS OR Resend.com via Supabase Edge Function
+Database
+Supabase — PostgreSQL + Auth + Storage + Realtime
+Animations
+Framer Motion (primary) · GSAP (for scroll-pinned service stack)
+Styling
+Tailwind CSS + custom CSS variables for theme colors
+Framework
+Next.js 14 (App Router) — SSR for SEO, dynamic routes for Presence
+15 · TECH STACK & KEY DEPENDENCIES
+•    /admin/presence, /admin/clients, /admin/team, /admin/inbox
+•    /admin — Protected admin dashboard
+•    /presence/[city-slug] — City gallery sub-page
+Separate Routes:
+•    11. Footer
+•    10. Contact Us — Form + map
+•    9. Team — Interactive flip cards
+•    8. Presence — City tiles (links to dynamic sub-pages)
+•    7. Clients — Logo grid + marquee
+•    6. [MEDIA STRIP] — Campaign image marquee
+•    5. Services — Stacked scroll cards
+•    4. [MEDIA STRIP] — Billboard image marquee
+•    3. About Us — Map + story
+•    2. Hero — Full-screen carousel with animated text
+•    1. Header (sticky)
+14 · FULL PAGE STRUCTURE & SCROLL ORDER
+Form Submit
+Button morphs to spinner then checkmark
+CTA Buttons
+Hover: lift + shadow + slight scale(1.03)
+Section Transitions
+Fade+slide-up via IntersectionObserver · threshold 0.15
+Team Cards
+CSS 3D flip on hover
+Presence Tiles
+Stagger fade-slide-up · image scale on hover
+Client Logos
+Fade-in grid + infinite scroll marquee row
+----------------Page (8) Break----------------
+defined in this document.
+→ Contact → Footer → Admin Dashboard. All colors, interactions, database tables, and animation specs are
+component. Build order recommendation: Header → Hero → About → Services → Clients → Presence → Team
+This PDF serves as the complete design & development blueprint. Each section above maps directly to a React
+Carousel
+Embla Carousel or Swiper.js
+Map
+React Simple Maps (SVG) for Pakistan presence map
+Icons
+Lucide React or Heroicons
+Deployment
+Vercel (recommended) — free tier covers this project
+Image Optimization
+Next.js Image component + Supabase CDN
+----------------Page (9) Break----------------

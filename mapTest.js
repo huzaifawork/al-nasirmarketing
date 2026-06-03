@@ -1,0 +1,1 @@
+const fs = require('fs'); const topojson = require('topojson-client'); const file = JSON.parse(fs.readFileSync('public/pakistan.topo.json', 'utf8')); const geo = topojson.feature(file, file.objects.default); console.log(geo.features[0].geometry.coordinates[0][0]);
