@@ -232,7 +232,7 @@ export default function AboutUs() {
                   maxZoom={4} // max zoom allowed
                 >
                   <Geographies geography="/pakistan.topo.json">
-                    {({ geographies }) =>
+                    {({ geographies }: { geographies: any[] }) =>
                       geographies.map((geo) => (
                         <Geography
                           key={geo.rsmKey}

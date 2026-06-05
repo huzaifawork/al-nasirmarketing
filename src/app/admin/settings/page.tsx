@@ -27,7 +27,7 @@ export default function SettingsAdmin() {
       if (!error && data) {
         const settingsMap: any = {};
         data.forEach(s => settingsMap[s.key] = s.value);
-        setSettings(prev => ({ ...prev, ...settingsMap }));
+        setSettings((prev: any) => ({ ...prev, ...settingsMap }));
       }
       setLoading(false);
     }

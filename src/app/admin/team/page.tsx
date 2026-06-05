@@ -51,7 +51,6 @@ export default function TeamAdmin() {
       department: editingMember.department,
       photo_url: editingMember.photo_url || '',
       quote: editingMember.quote || '',
-      email: editingMember.email || '',
       fun_fact: editingMember.fun_fact || '',
       sort_order: editingMember.sort_order || 0
     };
