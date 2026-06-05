@@ -32,7 +32,7 @@ export default function TeamAdmin() {
       .select('*')
       .order('sort_order', { ascending: true });
     
-    if (!error && data) setTeam(data);
+    if (!error && data) setTeam(data as TeamMember[]);
     setLoading(false);
   }, []);
 

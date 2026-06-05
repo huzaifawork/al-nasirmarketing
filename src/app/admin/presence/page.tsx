@@ -35,13 +35,13 @@ export default function PresenceAdmin() {
   const fetchCities = useCallback(async () => {
     setLoading(true);
     const { data } = await supabase.from("presence_cities").select("*").order("sort_order", { ascending: true });
-    if (data) setCities(data);
+    if (data) setCities(data as City[]);
     setLoading(false);
   }, []);
 
   const fetchImages = useCallback(async (cityId: string) => {
     const { data } = await supabase.from("presence_images").select("*").eq("city_id", cityId).order("sort_order", { ascending: true });
-    if (data) setImages((prev) => ({ ...prev, [cityId]: data }));
+    if (data) setImages((prev) => ({ ...prev, [cityId]: data as PresenceImage[] }));
   }, []);
 
   useEffect(() => { fetchCities(); }, [fetchCities]);
