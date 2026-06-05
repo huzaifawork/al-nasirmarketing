@@ -33,10 +33,10 @@ export default function CustomCursor() {
       if (hovering !== isHoveringRef.current) {
         isHoveringRef.current = hovering;
         if (dotRef.current) {
-          dotRef.current.style.transform = `translate(${mousePos.current.x - 4}px, ${mousePos.current.y - 4}px) scale(${hovering ? 0 : 1})`;
+          dotRef.current.style.transform = `translate(${mousePos.current.x - 3}px, ${mousePos.current.y - 3}px) scale(${hovering ? 0 : 1})`;
         }
         if (circleRef.current) {
-          circleRef.current.style.transform = `translate(${circlePos.current.x - 20}px, ${circlePos.current.y - 20}px) scale(${hovering ? 1.5 : 1})`;
+          circleRef.current.style.transform = `translate(${circlePos.current.x - 14}px, ${circlePos.current.y - 14}px) scale(${hovering ? 1.5 : 1})`;
           circleRef.current.style.backgroundColor = hovering ? 'rgba(56,189,248, 0.2)' : 'rgba(56,189,248, 0.05)';
         }
       }
@@ -48,14 +48,14 @@ export default function CustomCursor() {
       const circle = circleRef.current;
       
       if (dot) {
-        dot.style.transform = `translate(${mousePos.current.x - 4}px, ${mousePos.current.y - 4}px) scale(${isHoveringRef.current ? 0 : 1})`;
+        dot.style.transform = `translate(${mousePos.current.x - 3}px, ${mousePos.current.y - 3}px) scale(${isHoveringRef.current ? 0 : 1})`;
       }
       
       if (circle) {
         // Smooth lerp for the trailing circle
         circlePos.current.x += (mousePos.current.x - circlePos.current.x) * 0.15;
         circlePos.current.y += (mousePos.current.y - circlePos.current.y) * 0.15;
-        circle.style.transform = `translate(${circlePos.current.x - 20}px, ${circlePos.current.y - 20}px) scale(${isHoveringRef.current ? 1.5 : 1})`;
+        circle.style.transform = `translate(${circlePos.current.x - 14}px, ${circlePos.current.y - 14}px) scale(${isHoveringRef.current ? 1.5 : 1})`;
       }
       
       rafRef.current = requestAnimationFrame(animate);
@@ -78,14 +78,14 @@ export default function CustomCursor() {
       {/* Small dot that exactly follows the cursor */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-2 h-2 bg-[#38BDF8] rounded-full pointer-events-none z-[999999]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-[#38BDF8] rounded-full pointer-events-none z-[999999]"
         style={{ willChange: 'transform' }}
       />
       
       {/* Larger trailing circle */}
       <div
         ref={circleRef}
-        className="fixed top-0 left-0 w-10 h-10 border border-[#38BDF8]/50 rounded-full pointer-events-none z-[999998] bg-[#38BDF8]/5"
+        className="fixed top-0 left-0 w-7 h-7 border border-[#38BDF8]/50 rounded-full pointer-events-none z-[999998] bg-[#38BDF8]/5"
         style={{ willChange: 'transform', transition: 'background-color 0.3s' }}
       />
     </>
