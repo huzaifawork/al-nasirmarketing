@@ -29,7 +29,7 @@ export default function ClientAdmin() {
       .select('*')
       .order('sort_order', { ascending: true });
     
-    if (!error && data) setClients(data);
+    if (!error && data) setClients(data as Client[]);
     setLoading(false);
   }, []);
 
