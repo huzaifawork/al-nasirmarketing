@@ -43,7 +43,7 @@ export default function InboxAdmin() {
     if (filter === 'read') query = query.eq('is_read', true);
 
     const { data, error } = await query;
-    if (!error && data) setSubmissions(data);
+    if (!error && data) setSubmissions(data as Submission[]);
     setLoading(false);
   }, [filter]);
 
