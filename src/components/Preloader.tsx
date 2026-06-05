@@ -44,7 +44,7 @@ export default function Preloader() {
           className="fixed inset-0 z-[10000] bg-[#050A15] flex flex-col items-center justify-center overflow-hidden"
         >
           {/* Background Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#2EAB8C] rounded-full blur-[120px] opacity-10 pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#38BDF8] rounded-full blur-[120px] opacity-10 pointer-events-none" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#496B88] rounded-full blur-[150px] opacity-5 pointer-events-none" />
 
           <div className="relative z-10 flex flex-col items-center">
@@ -65,7 +65,7 @@ export default function Preloader() {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                className="text-[#2EAB8C] text-xs md:text-sm font-bold uppercase tracking-[0.4em]"
+                className="text-[#38BDF8] text-xs md:text-sm font-bold uppercase tracking-[0.4em]"
               >
                 Pioneering Visual Dominance
               </motion.p>
@@ -83,7 +83,7 @@ export default function Preloader() {
               </motion.div>
               <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
                 <motion.div 
-                  className="h-full bg-gradient-to-r from-[#2EAB8C] to-[#496B88]"
+                  className="h-full bg-gradient-to-r from-[#38BDF8] to-[#496B88]"
                   initial={{ width: "0%" }}
                   animate={{ width: `${progress}%` }}
                   transition={{ ease: "linear", duration: 0.1 }}

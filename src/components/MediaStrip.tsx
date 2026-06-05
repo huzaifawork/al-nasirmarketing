@@ -50,7 +50,7 @@ export default function MediaStrip({
         {duplicated.map((src, i) => (
           <div
             key={i}
-            className="relative w-[300px] h-[200px] shrink-0 rounded-xl overflow-hidden shadow-lg border border-white/5 transition-transform duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(46,171,140,0.3)]"
+            className="relative w-[300px] h-[200px] shrink-0 rounded-xl overflow-hidden shadow-lg border border-white/5 transition-transform duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(56,189,248,0.3)]"
           >
             <Image
               src={src}

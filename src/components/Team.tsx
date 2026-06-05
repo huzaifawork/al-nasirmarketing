@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { FaLinkedinIn } from "react-icons/fa";
+import { Mail } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
 type TeamMember = {
@@ -13,7 +12,7 @@ type TeamMember = {
   department: string;
   photo_url: string | null;
   quote: string | null;
-  linkedin_url: string | null;
+  email: string | null;
   fun_fact: string | null;
 };
 
@@ -25,7 +24,7 @@ const MOCK_TEAM: TeamMember[] = [
     department: "Leadership",
     photo_url: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop",
     quote: "Vision without execution is just hallucination. We execute flawlessly.",
-    linkedin_url: "https://linkedin.com",
+    email: null,
     fun_fact: "Started the agency from a single desk in 1994.",
   },
   {
@@ -35,7 +34,7 @@ const MOCK_TEAM: TeamMember[] = [
     department: "Creative",
     photo_url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop",
     quote: "Design is the silent ambassador of your brand.",
-    linkedin_url: "https://linkedin.com",
+    email: null,
     fun_fact: "Has an unhealthy obsession with typography and coffee.",
   },
   {
@@ -45,20 +44,20 @@ const MOCK_TEAM: TeamMember[] = [
     department: "Digital",
     photo_url: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop",
     quote: "Data beats opinions. Let the metrics guide the creative.",
-    linkedin_url: "https://linkedin.com",
+    email: null,
     fun_fact: "Reads API documentation for fun.",
   },
 ];
 
 const deptColor: Record<string, string> = {
-  Leadership: "bg-[#2EAB8C]/20 text-[#2EAB8C] border-[#2EAB8C]/30",
+  Leadership: "bg-[#38BDF8]/20 text-[#38BDF8] border-[#38BDF8]/30",
   Creative: "bg-[#496B88]/20 text-[#496B88] border-[#496B88]/30",
   Digital: "bg-purple-500/20 text-purple-400 border-purple-500/30",
   default: "bg-white/10 text-gray-300 border-white/20",
 };
 
 const deptAccent: Record<string, string> = {
-  Leadership: "#2EAB8C",
+  Leadership: "#38BDF8",
   Creative: "#496B88",
   Digital: "#a855f7",
   default: "#ffffff",
@@ -84,19 +83,19 @@ export default function Team() {
 
   return (
     <section id="team" className="py-16 md:py-32 bg-[#050A15] relative overflow-hidden border-t border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(46,171,140,0.06),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(56,189,248,0.06),transparent)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-24 relative z-10">
 
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-20">
           <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
-            <span className="w-8 md:w-12 h-[2px] bg-[#2EAB8C]" />
-            <span className="text-[#2EAB8C] text-xs md:text-sm font-black uppercase tracking-[0.3em] md:tracking-[0.4em]">Our People</span>
-            <span className="w-8 md:w-12 h-[2px] bg-[#2EAB8C]" />
+            <span className="w-8 md:w-12 h-[2px] bg-[#38BDF8]" />
+            <span className="text-[#38BDF8] text-xs md:text-sm font-black uppercase tracking-[0.3em] md:tracking-[0.4em]">Our People</span>
+            <span className="w-8 md:w-12 h-[2px] bg-[#38BDF8]" />
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-4 md:mb-6">
-            Meet The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2EAB8C] to-[#496B88]">Team</span>
+            Meet The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] to-[#496B88]">Team</span>
           </h2>
           <p className="text-gray-400 text-sm md:text-base max-w-2xl font-light">
             A collective of visionaries, strategists, and creatives dedicated to pushing the boundaries of marketing.
@@ -141,15 +140,14 @@ export default function Team() {
                     </span>
                   </div>
 
-                  {/* LinkedIn */}
-                  {member.linkedin_url && (
-                    <Link
-                      href={member.linkedin_url}
-                      target="_blank"
-                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#0077b5] hover:border-[#0077b5] transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0"
+                  {member.email && (
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#38BDF8] hover:border-[#38BDF8] transition-all duration-300 opacity-0 group-hover:opacity-100"
+                      aria-label="Email"
                     >
-                      <FaLinkedinIn size={13} />
-                    </Link>
+                      <Mail size={13} />
+                    </a>
                   )}
                 </div>
 

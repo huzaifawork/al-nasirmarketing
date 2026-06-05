@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Send, CheckCircle2, ArrowRight } from "lucide-react";
-import { FaInstagram, FaLinkedinIn, FaYoutube, FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaFacebookF } from "react-icons/fa";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
@@ -25,21 +25,18 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    lines: ["+92 300 000 0000"],
+    lines: ["+92 317 7272777"],
   },
   {
     icon: Mail,
     title: "Email Us",
-    lines: ["contact@alnasir.pk"],
+    lines: ["alnasirmarketing@gmail.com"],
   },
 ];
 
 const socials = [
-  { icon: FaFacebookF, href: "#", label: "Facebook" },
-  { icon: FaInstagram, href: "#", label: "Instagram" },
-  { icon: FaLinkedinIn, href: "#", label: "LinkedIn" },
-  { icon: FaYoutube, href: "#", label: "YouTube" },
-  { icon: FaWhatsapp, href: "#", label: "WhatsApp" },
+  { icon: FaFacebookF, href: "https://www.facebook.com/share/14iK4EaoQR4/?mibextid=wwXIfr", label: "Facebook" },
+  { icon: FaInstagram, href: "https://www.instagram.com/alnasiradvertising?igsh=MWRuYTUwcjJ5eTd6MQ%3D%3D&utm_source=qr", label: "Instagram" },
 ];
 
 export default function Contact() {
@@ -88,7 +85,7 @@ export default function Contact() {
     <section id="contact" className="relative bg-[#050A15] border-t border-white/5 overflow-hidden">
 
       {/* ── TOP BANNER ── */}
-      <div className="w-full bg-gradient-to-r from-[#2EAB8C] via-[#1d8a70] to-[#496B88] py-5 px-6 flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
+      <div className="w-full bg-gradient-to-r from-[#38BDF8] via-[#1d8a70] to-[#496B88] py-5 px-6 flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
         <span className="text-white font-black uppercase tracking-[0.2em] text-sm">Ready to dominate your market?</span>
         <span className="hidden sm:block text-white/50">—</span>
         <span className="text-white/80 text-sm font-medium">Let&apos;s build your next campaign together.</span>
@@ -100,7 +97,7 @@ export default function Contact() {
         {/* ── LEFT PANEL ── */}
         <div className="relative w-full lg:w-[42%] bg-[#0a1120] flex flex-col justify-between px-5 sm:px-8 md:px-10 py-8 lg:py-12 overflow-hidden">
           {/* bg decor */}
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#2EAB8C]/8 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#38BDF8]/8 rounded-full blur-[120px] pointer-events-none" />
           <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#496B88]/8 rounded-full blur-[100px] pointer-events-none" />
           {/* dot grid */}
           <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none" />
@@ -108,14 +105,14 @@ export default function Contact() {
           <div className="relative z-10">
             {/* Label */}
             <div className="flex items-center gap-3 mb-5">
-              <span className="w-8 h-[2px] bg-[#2EAB8C]" />
-              <span className="text-[#2EAB8C] text-xs font-black uppercase tracking-[0.4em]">Get In Touch</span>
+              <span className="w-8 h-[2px] bg-[#38BDF8]" />
+              <span className="text-[#38BDF8] text-xs font-black uppercase tracking-[0.4em]">Get In Touch</span>
             </div>
 
             {/* Heading */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.4rem] font-black text-white uppercase tracking-tighter leading-[1.05] mb-3 md:mb-4">
               Let&apos;s Build<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2EAB8C] to-[#496B88]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] to-[#496B88]">
                 Something Great
               </span>
             </h2>
@@ -134,13 +131,17 @@ export default function Contact() {
                   transition={{ delay: i * 0.1, duration: 0.5 }}
                   className="flex items-start gap-5 group"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-[#2EAB8C]/10 border border-[#2EAB8C]/20 flex items-center justify-center shrink-0 group-hover:bg-[#2EAB8C]/20 transition-colors duration-300">
-                    <item.icon size={16} className="text-[#2EAB8C]" />
+                  <div className="w-9 h-9 rounded-xl bg-[#38BDF8]/10 border border-[#38BDF8]/20 flex items-center justify-center shrink-0 group-hover:bg-[#38BDF8]/20 transition-colors duration-300">
+                    <item.icon size={16} className="text-[#38BDF8]" />
                   </div>
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-[0.25em] text-gray-500 mb-1">{item.title}</p>
                     {item.lines.map((line, j) => (
-                      <p key={j} className="text-white font-medium text-sm leading-relaxed">{line}</p>
+                      item.title === "Email Us"
+                        ? <a key={j} href="https://mail.google.com/mail/?view=cm&to=alnasirmarketing@gmail.com" target="_blank" rel="noopener noreferrer" className="text-white font-medium text-sm leading-relaxed hover:text-[#38BDF8] transition-colors">{line}</a>
+                        : item.title === "Call Us"
+                          ? <a key={j} href="https://wa.me/923177272777" target="_blank" rel="noopener noreferrer" className="text-white font-medium text-sm leading-relaxed hover:text-[#38BDF8] transition-colors">{line}</a>
+                          : <p key={j} className="text-white font-medium text-sm leading-relaxed">{line}</p>
                     ))}
                   </div>
                 </motion.div>
@@ -152,14 +153,16 @@ export default function Contact() {
               <p className="text-[10px] font-black uppercase tracking-[0.25em] text-gray-500 mb-4">Follow Us</p>
               <div className="flex gap-3 flex-wrap">
                 {socials.map(({ icon: Icon, href, label }) => (
-                  <Link
+                  <a
                     key={label}
                     href={href}
                     aria-label={label}
-                    className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#2EAB8C] hover:text-white hover:border-[#2EAB8C] hover:scale-110 transition-all duration-300"
+                    target={href.startsWith('mailto') ? '_self' : '_blank'}
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-[#38BDF8] hover:text-white hover:border-[#38BDF8] hover:scale-110 transition-all duration-300"
                   >
                     <Icon size={16} />
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>
@@ -173,7 +176,7 @@ export default function Contact() {
 
         {/* ── RIGHT PANEL (FORM) ── */}
         <div className="w-full lg:w-[58%] bg-[#050A15] flex items-center justify-center px-5 sm:px-8 md:px-10 lg:px-14 py-8 lg:py-12 relative">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#2EAB8C]/5 rounded-full blur-[150px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#38BDF8]/5 rounded-full blur-[150px] pointer-events-none" />
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -191,8 +194,8 @@ export default function Contact() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center py-24 gap-6 text-center"
               >
-                <div className="w-20 h-20 rounded-full bg-[#2EAB8C]/20 border border-[#2EAB8C]/40 flex items-center justify-center">
-                  <CheckCircle2 size={40} className="text-[#2EAB8C]" />
+                <div className="w-20 h-20 rounded-full bg-[#38BDF8]/20 border border-[#38BDF8]/40 flex items-center justify-center">
+                  <CheckCircle2 size={40} className="text-[#38BDF8]" />
                 </div>
                 <h4 className="text-2xl font-black text-white uppercase tracking-tight">Message Sent!</h4>
                 <p className="text-gray-400 max-w-sm">We&apos;ve received your inquiry and will be in touch within 24 hours.</p>
@@ -210,7 +213,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Your name"
-                      className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#2EAB8C] focus:bg-white/[0.07] transition-all placeholder:text-gray-600"
+                      className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#38BDF8] focus:bg-white/[0.07] transition-all placeholder:text-gray-600"
                     />
                   </div>
                   <div className="space-y-2">
@@ -220,7 +223,7 @@ export default function Contact() {
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       placeholder="Your brand / company"
-                      className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#2EAB8C] focus:bg-white/[0.07] transition-all placeholder:text-gray-600"
+                      className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#38BDF8] focus:bg-white/[0.07] transition-all placeholder:text-gray-600"
                     />
                   </div>
                 </div>
@@ -235,7 +238,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="you@example.com"
-                      className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#2EAB8C] focus:bg-white/[0.07] transition-all placeholder:text-gray-600"
+                      className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#38BDF8] focus:bg-white/[0.07] transition-all placeholder:text-gray-600"
                     />
                   </div>
                   <div className="space-y-2">
@@ -245,7 +248,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+92 300 0000000"
-                      className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#2EAB8C] focus:bg-white/[0.07] transition-all placeholder:text-gray-600"
+                      className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#38BDF8] focus:bg-white/[0.07] transition-all placeholder:text-gray-600"
                     />
                   </div>
                 </div>
@@ -262,7 +265,7 @@ export default function Contact() {
                         className={cn(
                           "px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest border transition-all duration-200",
                           formData.service_interest === s
-                            ? "bg-[#2EAB8C] border-[#2EAB8C] text-white shadow-[0_0_15px_rgba(46,171,140,0.3)]"
+                            ? "bg-[#38BDF8] border-[#38BDF8] text-white shadow-[0_0_15px_rgba(56,189,248,0.3)]"
                             : "bg-white/[0.04] border-white/10 text-gray-400 hover:border-white/30 hover:text-white"
                         )}
                       >
@@ -281,7 +284,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Tell us about your project, goals, and timeline..."
-                    className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#2EAB8C] focus:bg-white/[0.07] transition-all resize-none placeholder:text-gray-600"
+                    className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#38BDF8] focus:bg-white/[0.07] transition-all resize-none placeholder:text-gray-600"
                   />
                 </div>
 
@@ -289,7 +292,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={formState === "submitting"}
-                  className="w-full group relative flex items-center justify-center gap-3 bg-[#2EAB8C] hover:bg-[#258f75] disabled:opacity-60 text-white font-black uppercase tracking-[0.2em] text-sm py-3.5 rounded-xl transition-all duration-300 hover:shadow-[0_10px_30px_rgba(46,171,140,0.4)] hover:-translate-y-0.5 overflow-hidden"
+                  className="w-full group relative flex items-center justify-center gap-3 bg-[#38BDF8] hover:bg-[#258f75] disabled:opacity-60 text-white font-black uppercase tracking-[0.2em] text-sm py-3.5 rounded-xl transition-all duration-300 hover:shadow-[0_10px_30px_rgba(56,189,248,0.4)] hover:-translate-y-0.5 overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
                   {formState === "submitting" ? (

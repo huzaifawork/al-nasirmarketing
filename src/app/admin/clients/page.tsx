@@ -96,7 +96,7 @@ export default function ClientAdmin() {
             setEditingClient({ name: '', logo_url: '', is_featured: false, sort_order: 0 });
             setIsModalOpen(true);
           }}
-          className="flex items-center gap-2 bg-[#2EAB8C] hover:bg-[#258f75] text-white px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(46,171,140,0.2)]"
+          className="flex items-center gap-2 bg-[#38BDF8] hover:bg-[#258f75] text-white px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(56,189,248,0.2)]"
         >
           <Plus size={18} />
           <span>Add New Client</span>
@@ -105,7 +105,7 @@ export default function ClientAdmin() {
 
       {loading ? (
         <div className="flex items-center justify-center h-64">
-          <Loader2 className="animate-spin text-[#2EAB8C]" size={32} />
+          <Loader2 className="animate-spin text-[#38BDF8]" size={32} />
         </div>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
@@ -113,7 +113,7 @@ export default function ClientAdmin() {
             <motion.div
               layout
               key={client.id}
-              className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 group hover:border-[#2EAB8C]/30 transition-all flex flex-col items-center text-center"
+              className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 group hover:border-[#38BDF8]/30 transition-all flex flex-col items-center text-center"
             >
               <div className="relative w-full aspect-square bg-white/[0.02] rounded-xl flex items-center justify-center mb-4 p-4">
                 <img src={client.logo_url} alt={client.name} className="max-w-full max-h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
@@ -121,7 +121,7 @@ export default function ClientAdmin() {
                   onClick={() => toggleFeatured(client)}
                   className={cn(
                     "absolute top-2 right-2 p-1.5 rounded-lg transition-colors",
-                    client.is_featured ? "bg-[#2EAB8C]/20 text-[#2EAB8C]" : "bg-white/5 text-gray-600 hover:text-white"
+                    client.is_featured ? "bg-[#38BDF8]/20 text-[#38BDF8]" : "bg-white/5 text-gray-600 hover:text-white"
                   )}
                   title={client.is_featured ? "Featured" : "Mark as Featured"}
                 >
@@ -186,7 +186,7 @@ export default function ClientAdmin() {
                     type="text" 
                     value={editingClient?.name || ''}
                     onChange={(e) => setEditingClient({ ...editingClient, name: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
                     placeholder="e.g. Coca-Cola"
                     required
                   />
@@ -206,7 +206,7 @@ export default function ClientAdmin() {
                       type="url" 
                       value={editingClient?.website_url || ''}
                       onChange={(e) => setEditingClient({ ...editingClient, website_url: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
                       placeholder="https://..."
                     />
                   </div>
@@ -216,7 +216,7 @@ export default function ClientAdmin() {
                       type="number" 
                       value={editingClient?.sort_order || 0}
                       onChange={(e) => setEditingClient({ ...editingClient, sort_order: parseInt(e.target.value) })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
                     />
                   </div>
                 </div>
@@ -224,7 +224,7 @@ export default function ClientAdmin() {
                 <label className="flex items-center gap-3 cursor-pointer group">
                    <div className={cn(
                      "w-10 h-6 rounded-full transition-colors relative flex items-center px-1",
-                     editingClient?.is_featured ? "bg-[#2EAB8C]" : "bg-white/10"
+                     editingClient?.is_featured ? "bg-[#38BDF8]" : "bg-white/10"
                    )}>
                      <motion.div 
                         animate={{ x: editingClient?.is_featured ? 16 : 0 }}
@@ -244,7 +244,7 @@ export default function ClientAdmin() {
                   <button
                     type="submit"
                     disabled={saving}
-                    className="flex-1 bg-[#2EAB8C] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2"
+                    className="flex-1 bg-[#38BDF8] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2"
                   >
                     {saving ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
                     <span>{editingClient?.id ? 'Update Client' : 'Add Client'}</span>

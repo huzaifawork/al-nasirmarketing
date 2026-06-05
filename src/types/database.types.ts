@@ -188,7 +188,7 @@ export type Database = {
           department: string
           fun_fact: string | null
           id: string
-          linkedin_url: string | null
+          email: string | null
           name: string
           photo_url: string | null
           quote: string | null

@@ -18,8 +18,7 @@ const services: Service[] = [
     title: "Outdoor Billboard Advertising",
     description:
       "Strategic placement of static, backlit, and digital billboards across prime locations in major cities. Site selection, design production, and campaign monitoring included.",
-    image:
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop",
+    image: "/service-images/outdoor-billboard.png",
     color: "from-[#1B2A4A] to-[#121d36]",
   },
   {
@@ -27,8 +26,7 @@ const services: Service[] = [
     title: "SMD / LED Digital Screens",
     description:
       "High-brightness LED and SMD screen networks for dynamic content delivery. Real-time content updates, dayparting scheduling, and audience targeting.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    image: "/service-images/led-smd.png",
     color: "from-[#1a2c47] to-[#0a1120]",
   },
   {
@@ -36,8 +34,7 @@ const services: Service[] = [
     title: "Social Media Marketing",
     description:
       "Paid and organic campaigns across Facebook, Instagram, TikTok, LinkedIn, and YouTube. Full funnel strategy from awareness to conversion.",
-    image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop",
+    image: "/service-images/social-media-marketing.png",
     color: "from-[#0f1f33] to-[#050a14]",
   },
   {
@@ -45,8 +42,7 @@ const services: Service[] = [
     title: "Social Media Management",
     description:
       "End-to-end community management: content calendar, posting, engagement monitoring, reporting, and brand voice consistency.",
-    image:
-      "https://images.unsplash.com/photo-1616469829941-c7200edec809?q=80&w=2070&auto=format&fit=crop",
+    image: "/service-images/social-media-management.png",
     color: "from-[#1B2A4A] to-[#121d36]",
   },
   {
@@ -54,8 +50,7 @@ const services: Service[] = [
     title: "UGC Ads",
     description:
       "User-Generated Content ad production and deployment. Authentic creator-style ads that outperform traditional creative in cost-per-result.",
-    image:
-      "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop",
+    image: "/service-images/ugc-ads.png",
     color: "from-[#1a2c47] to-[#0a1120]",
   },
   {
@@ -63,8 +58,7 @@ const services: Service[] = [
     title: "SEO Optimization",
     description:
       "Technical SEO audits, on-page optimization, backlink building, local SEO for Pakistan markets, and monthly ranking reports.",
-    image:
-      "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?q=80&w=1974&auto=format&fit=crop",
+    image: "/service-images/SEO.avif",
     color: "from-[#0f1f33] to-[#050a14]",
   },
   {
@@ -72,8 +66,7 @@ const services: Service[] = [
     title: "AI-Driven Marketing Strategies",
     description:
       "Leveraging AI tools for ad creative generation, audience segmentation, predictive analytics, chatbot automation, and performance optimization.",
-    image:
-      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop",
+    image: "/service-images/ai-driven.jpg",
     color: "from-[#1B2A4A] to-[#121d36]",
   },
 ];
@@ -111,7 +104,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         </div>
         {/* Content */}
         <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col justify-center">
-          <span className="text-[#2EAB8C] text-lg md:text-2xl font-bold mb-3 opacity-60 tracking-widest">
+          <span className="text-[#38BDF8] text-lg md:text-2xl font-bold mb-3 opacity-60 tracking-widest">
             {service.id}.
           </span>
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight uppercase">
@@ -120,7 +113,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           <p className="text-gray-300 text-sm md:text-lg font-normal leading-relaxed mb-6">
             {service.description}
           </p>
-          <button className="group/btn flex items-center gap-3 text-white font-bold text-xs uppercase tracking-[0.15em] hover:text-[#2EAB8C] transition-colors w-fit">
+          <button className="group/btn flex items-center gap-3 text-white font-bold text-xs uppercase tracking-[0.15em] hover:text-[#38BDF8] transition-colors w-fit">
             Discover More
             <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform duration-300" />
           </button>
@@ -148,15 +141,15 @@ export default function Services() {
           className="flex flex-col items-center text-center"
         >
           <div className="flex items-center gap-4 mb-6">
-            <span className="w-8 md:w-12 h-[2px] bg-[#2EAB8C]" />
-            <span className="text-[#2EAB8C] text-xs md:text-sm font-black uppercase tracking-[0.4em]">
+            <span className="w-8 md:w-12 h-[2px] bg-[#38BDF8]" />
+            <span className="text-[#38BDF8] text-xs md:text-sm font-black uppercase tracking-[0.4em]">
               Our Expertise
             </span>
-            <span className="w-8 md:w-12 h-[2px] bg-[#2EAB8C]" />
+            <span className="w-8 md:w-12 h-[2px] bg-[#38BDF8]" />
           </div>
           <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tighter uppercase">
             ENGINEERED FOR{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2EAB8C] to-[#496B88]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] to-[#496B88]">
               IMPACT
             </span>
           </h2>

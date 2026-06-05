@@ -54,16 +54,15 @@ export default function AdminDashboard() {
 
   const statCards = [
     { name: 'Inquiries', value: stats.contacts, sub: `${stats.unreadContacts} unread`, icon: Inbox, color: 'text-blue-400', bg: 'bg-blue-400/10', border: 'border-blue-400/20', shadow: 'shadow-[0_0_30px_rgba(96,165,250,0.1)]', href: '/admin/inbox' },
-    { name: 'Presence', value: stats.cities, sub: 'Active locations', icon: MapPin, color: 'text-[#2EAB8C]', bg: 'bg-[#2EAB8C]/10', border: 'border-[#2EAB8C]/20', shadow: 'shadow-[0_0_30px_rgba(46,171,140,0.1)]', href: '/admin/presence' },
-    { name: 'Clients', value: stats.clients, sub: 'Brand partners', icon: Users, color: 'text-yellow-400', bg: 'bg-yellow-400/10', border: 'border-yellow-400/20', shadow: 'shadow-[0_0_30px_rgba(250,204,21,0.1)]', href: '/admin/clients' },
+    { name: 'Presence', value: stats.cities, sub: 'Active locations', icon: MapPin, color: 'text-[#38BDF8]', bg: 'bg-[#38BDF8]/10', border: 'border-[#38BDF8]/20', shadow: 'shadow-[0_0_30px_rgba(56,189,248,0.1)]', href: '/admin/presence' },
     { name: 'Team', value: stats.team, sub: 'Key personnel', icon: UserCircle, color: 'text-purple-400', bg: 'bg-purple-400/10', border: 'border-purple-400/20', shadow: 'shadow-[0_0_30px_rgba(192,132,252,0.1)]', href: '/admin/team' },
   ];
 
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center h-[70vh]">
-        <Loader2 className="animate-spin text-[#2EAB8C] mb-4" size={40} />
-        <span className="text-[#2EAB8C] font-black uppercase tracking-widest text-xs">Compiling Metrics</span>
+        <Loader2 className="animate-spin text-[#38BDF8] mb-4" size={40} />
+        <span className="text-[#38BDF8] font-black uppercase tracking-widest text-xs">Compiling Metrics</span>
       </div>
     );
   }
@@ -74,21 +73,21 @@ export default function AdminDashboard() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-white/5 pb-8">
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-8 h-1 bg-[#2EAB8C] rounded-full" />
-            <span className="text-[#2EAB8C] font-black tracking-[0.3em] uppercase text-[10px]">Command Center</span>
+            <span className="w-8 h-1 bg-[#38BDF8] rounded-full" />
+            <span className="text-[#38BDF8] font-black tracking-[0.3em] uppercase text-[10px]">Command Center</span>
           </div>
           <h1 className="text-5xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
             Overview
           </h1>
         </div>
         <div className="flex items-center gap-3 bg-white/5 px-5 py-2.5 rounded-full border border-white/10">
-          <div className="w-2 h-2 rounded-full bg-[#2EAB8C] animate-pulse" />
+          <div className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse" />
           <span className="text-xs font-black uppercase tracking-widest text-gray-300">System Online</span>
         </div>
       </div>
 
       {/* Stat Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {statCards.map((stat, i) => {
           const Icon = stat.icon;
           return (
@@ -113,7 +112,7 @@ export default function AdminDashboard() {
               <div className="flex items-end gap-3 mb-2">
                 <p className="text-5xl font-black tracking-tighter">{stat.value}</p>
               </div>
-              <p className="text-[#2EAB8C] text-[10px] uppercase font-bold tracking-wider">{stat.sub}</p>
+              <p className="text-[#38BDF8] text-[10px] uppercase font-bold tracking-wider">{stat.sub}</p>
               
               <div className="mt-8 pt-6 border-t border-white/5">
                 <Link 
@@ -121,7 +120,7 @@ export default function AdminDashboard() {
                   className="flex items-center justify-between text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 hover:text-white transition-colors group/link"
                 >
                   Manage Module 
-                  <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center group-hover/link:bg-[#2EAB8C] transition-colors">
+                  <div className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center group-hover/link:bg-[#38BDF8] transition-colors">
                     <ArrowRight size={10} className="group-hover/link:text-[#0a1120]" />
                   </div>
                 </Link>
@@ -141,7 +140,7 @@ export default function AdminDashboard() {
           transition={{ delay: 0.4 }}
           className="lg:col-span-2 bg-[#0a1120]/50 backdrop-blur-xl border border-white/5 rounded-[2rem] p-8 lg:p-10 relative overflow-hidden"
         >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#2EAB8C]/5 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#38BDF8]/5 via-transparent to-transparent pointer-events-none" />
           
           <div className="flex justify-between items-center mb-10 relative z-10">
             <div className="flex items-center gap-3">
@@ -170,7 +169,7 @@ export default function AdminDashboard() {
                   initial={{ height: 0 }}
                   animate={{ height: `${height}%` }}
                   transition={{ duration: 1, delay: 0.5 + (i * 0.1), type: 'spring' }}
-                  className="w-full bg-gradient-to-t from-[#496B88]/20 to-[#2EAB8C] rounded-t-lg relative overflow-hidden"
+                  className="w-full bg-gradient-to-t from-[#496B88]/20 to-[#38BDF8] rounded-t-lg relative overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </motion.div>
@@ -189,7 +188,7 @@ export default function AdminDashboard() {
           transition={{ delay: 0.5 }}
           className="space-y-6"
         >
-          <div className="bg-gradient-to-br from-[#2EAB8C] to-[#1B2A4A] rounded-[2rem] p-8 text-white relative overflow-hidden shadow-[0_20px_40px_rgba(46,171,140,0.2)]">
+          <div className="bg-gradient-to-br from-[#38BDF8] to-[#1B2A4A] rounded-[2rem] p-8 text-white relative overflow-hidden shadow-[0_20px_40px_rgba(56,189,248,0.2)]">
             <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 blur-[50px] rounded-full pointer-events-none" />
             <h2 className="text-2xl font-black uppercase tracking-tighter mb-4 leading-tight relative z-10">Deploy<br/>Updates</h2>
             <p className="text-white/80 text-xs leading-relaxed mb-8 relative z-10 font-medium">Keep the public frontend synchronized with the latest agency assets.</p>
@@ -212,7 +211,7 @@ export default function AdminDashboard() {
                  <Link 
                    key={action.name}
                    href={action.href}
-                   className="group flex items-center justify-between w-full px-5 py-4 bg-white/5 hover:bg-[#2EAB8C] border border-white/5 hover:border-[#2EAB8C] rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300"
+                   className="group flex items-center justify-between w-full px-5 py-4 bg-white/5 hover:bg-[#38BDF8] border border-white/5 hover:border-[#38BDF8] rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300"
                  >
                    {action.name}
                    <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-300 text-[#0a1120]" />

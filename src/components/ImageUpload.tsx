@@ -55,12 +55,12 @@ export default function ImageUpload({ value, onChange, folder = "general", label
           onClick={() => inputRef.current?.click()}
           onDrop={handleDrop}
           onDragOver={(e) => e.preventDefault()}
-          className="relative border-2 border-dashed border-white/10 hover:border-[#2EAB8C]/50 rounded-xl p-8 flex flex-col items-center justify-center gap-3 cursor-pointer transition-all group"
+          className="relative border-2 border-dashed border-white/10 hover:border-[#38BDF8]/50 rounded-xl p-8 flex flex-col items-center justify-center gap-3 cursor-pointer transition-all group"
         >
           {uploading ? (
-            <Loader2 size={28} className="text-[#2EAB8C] animate-spin" />
+            <Loader2 size={28} className="text-[#38BDF8] animate-spin" />
           ) : (
-            <Upload size={28} className="text-gray-600 group-hover:text-[#2EAB8C] transition-colors" />
+            <Upload size={28} className="text-gray-600 group-hover:text-[#38BDF8] transition-colors" />
           )}
           <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">
             {uploading ? "Uploading..." : "Click or drag to upload"}

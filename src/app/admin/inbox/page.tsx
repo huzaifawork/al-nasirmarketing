@@ -83,7 +83,7 @@ export default function InboxAdmin() {
               onClick={() => setFilter(f)}
               className={cn(
                 "px-6 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all",
-                filter === f ? "bg-[#2EAB8C] text-white" : "text-gray-500 hover:text-white"
+                filter === f ? "bg-[#38BDF8] text-white" : "text-gray-500 hover:text-white"
               )}
             >
               {f}
@@ -94,7 +94,7 @@ export default function InboxAdmin() {
 
       {loading ? (
         <div className="flex items-center justify-center h-64">
-          <Loader2 className="animate-spin text-[#2EAB8C]" size={32} />
+          <Loader2 className="animate-spin text-[#38BDF8]" size={32} />
         </div>
       ) : submissions.length === 0 ? (
         <div className="bg-white/[0.02] border border-dashed border-white/10 rounded-3xl p-20 flex flex-col items-center text-center">
@@ -105,9 +105,12 @@ export default function InboxAdmin() {
           <p className="text-gray-600 text-sm mt-2">No {filter !== 'all' ? filter : ''} submissions found.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="flex flex-col lg:grid lg:grid-cols-3 gap-8">
           {/* List */}
-          <div className="lg:col-span-1 space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+          <div className={cn(
+            "lg:col-span-1 space-y-4 lg:max-h-[600px] overflow-y-auto pr-2 custom-scrollbar",
+            selectedSubmission ? "hidden lg:block" : "block"
+          )}>
             {submissions.map((sub) => (
               <button
                 key={sub.id}
@@ -115,12 +118,12 @@ export default function InboxAdmin() {
                 className={cn(
                   "w-full text-left p-6 rounded-2xl border transition-all relative group",
                   selectedSubmission?.id === sub.id 
-                    ? "bg-[#121d36] border-[#2EAB8C]/50" 
+                    ? "bg-[#121d36] border-[#38BDF8]/50" 
                     : "bg-white/[0.03] border-white/5 hover:border-white/10"
                 )}
               >
                 {!sub.is_read && (
-                  <div className="absolute top-6 right-6 w-2 h-2 bg-[#2EAB8C] rounded-full shadow-[0_0_8px_#2EAB8C]" />
+                  <div className="absolute top-6 right-6 w-2 h-2 bg-[#38BDF8] rounded-full shadow-[0_0_8px_#38BDF8]" />
                 )}
                 <h4 className="font-bold text-white uppercase tracking-tight mb-1 truncate pr-6">{sub.name}</h4>
                 <p className="text-gray-500 text-[10px] uppercase tracking-widest font-bold mb-3">{sub.company || 'Private Individual'}</p>
@@ -133,7 +136,10 @@ export default function InboxAdmin() {
           </div>
 
           {/* Details View */}
-          <div className="lg:col-span-2">
+          <div className={cn(
+            "lg:col-span-2",
+            selectedSubmission ? "block" : "hidden lg:block"
+          )}>
             <AnimatePresence mode="wait">
               {selectedSubmission ? (
                 <motion.div
@@ -141,34 +147,40 @@ export default function InboxAdmin() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  className="bg-white/[0.03] border border-white/10 rounded-3xl p-10 h-full flex flex-col"
+                  className="bg-white/[0.03] border border-white/10 rounded-3xl p-6 md:p-10 flex flex-col"
                 >
-                  <div className="flex justify-between items-start mb-10 pb-10 border-b border-white/5">
-                    <div>
-                      <h2 className="text-3xl font-black uppercase tracking-tighter mb-2">{selectedSubmission.name}</h2>
-                      <div className="flex flex-wrap gap-4">
+                  <div className="flex justify-between items-start mb-8 pb-8 border-b border-white/5">
+                    <div className="flex-1 min-w-0">
+                      <button
+                        onClick={() => setSelectedSubmission(null)}
+                        className="lg:hidden flex items-center gap-1 text-[#38BDF8] text-[10px] font-black uppercase tracking-widest mb-4"
+                      >
+                        ← Back
+                      </button>
+                      <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tighter mb-2 truncate">{selectedSubmission.name}</h2>
+                      <div className="flex flex-wrap gap-3">
                         <div className="flex items-center gap-2 text-gray-400 text-sm">
-                          <Building2 size={16} className="text-[#2EAB8C]" />
+                          <Building2 size={16} className="text-[#38BDF8]" />
                           {selectedSubmission.company || 'N/A'}
                         </div>
                         <div className="flex items-center gap-2 text-gray-400 text-sm">
-                          <Mail size={16} className="text-[#2EAB8C]" />
+                          <Mail size={16} className="text-[#38BDF8]" />
                           {selectedSubmission.email}
                         </div>
                         <div className="flex items-center gap-2 text-gray-400 text-sm">
-                          <Phone size={16} className="text-[#2EAB8C]" />
+                          <Phone size={16} className="text-[#38BDF8]" />
                           {selectedSubmission.phone || 'N/A'}
                         </div>
                       </div>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 shrink-0 ml-4">
                       {!selectedSubmission.is_read && (
                         <button 
                           onClick={() => markAsRead(selectedSubmission.id)}
-                          className="flex items-center gap-2 bg-[#2EAB8C] hover:bg-[#258f75] text-white px-4 py-2 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all whitespace-nowrap"
+                          className="flex items-center gap-2 bg-[#38BDF8] hover:bg-[#258f75] text-white px-4 py-2 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all whitespace-nowrap"
                         >
                           <CheckCircle2 size={14} />
-                          <span>Mark Read</span>
+                          <span className="hidden sm:inline">Mark Read</span>
                         </button>
                       )}
                       <button 
@@ -182,14 +194,14 @@ export default function InboxAdmin() {
 
                   <div className="flex-1 space-y-8">
                     <div>
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2EAB8C] mb-4">Service Interest</h4>
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#38BDF8] mb-4">Service Interest</h4>
                       <div className="inline-block px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-sm font-bold text-white uppercase tracking-wider">
                         {selectedSubmission.service_interest || 'General Inquiry'}
                       </div>
                     </div>
 
                     <div>
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2EAB8C] mb-4">Message Body</h4>
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#38BDF8] mb-4">Message Body</h4>
                       <div className="bg-white/[0.02] border border-white/5 p-8 rounded-2xl text-gray-300 leading-relaxed text-lg italic font-serif">
                         &quot;{selectedSubmission.message || 'No message provided.'}&quot;
                       </div>

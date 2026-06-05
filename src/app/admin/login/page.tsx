@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Lock, Mail, Loader2 } from 'lucide-react';
+import { Lock, Mail, Loader2, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 import Image from 'next/image';
 
 export default function AdminLogin() {
@@ -36,7 +37,7 @@ export default function AdminLogin() {
   return (
     <div className="min-h-screen bg-[#0a1120] flex items-center justify-center p-6 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#2EAB8C]/10 blur-[120px] rounded-full" />
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#38BDF8]/10 blur-[120px] rounded-full" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#496B88]/10 blur-[120px] rounded-full" />
 
       <motion.div 
@@ -64,7 +65,7 @@ export default function AdminLogin() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="admin@al-nasir.com"
                   required
-                  className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#2EAB8C] focus:ring-1 focus:ring-[#2EAB8C] transition-all"
+                  className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#38BDF8] focus:ring-1 focus:ring-[#38BDF8] transition-all"
                 />
               </div>
             </div>
@@ -79,7 +80,7 @@ export default function AdminLogin() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   required
-                  className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#2EAB8C] focus:ring-1 focus:ring-[#2EAB8C] transition-all"
+                  className="w-full bg-white/[0.05] border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-[#38BDF8] focus:ring-1 focus:ring-[#38BDF8] transition-all"
                 />
               </div>
             </div>
@@ -97,7 +98,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#2EAB8C] hover:bg-[#258f75] disabled:opacity-50 disabled:cursor-not-allowed text-white font-black uppercase tracking-[0.2em] py-4 rounded-xl transition-all shadow-[0_10px_20px_rgba(46,171,140,0.2)] hover:shadow-[0_15px_30px_rgba(46,171,140,0.3)] hover:-translate-y-1 flex items-center justify-center gap-2"
+              className="w-full bg-[#38BDF8] hover:bg-[#258f75] disabled:opacity-50 disabled:cursor-not-allowed text-white font-black uppercase tracking-[0.2em] py-4 rounded-xl transition-all shadow-[0_10px_20px_rgba(56,189,248,0.2)] hover:shadow-[0_15px_30px_rgba(56,189,248,0.3)] hover:-translate-y-1 flex items-center justify-center gap-2"
             >
               {loading ? (
                 <>
@@ -111,9 +112,15 @@ export default function AdminLogin() {
           </form>
         </div>
 
-        <p className="text-center text-gray-500 text-[10px] uppercase tracking-widest mt-8">
-          &copy; {new Date().getFullYear()} AL-NASIR ADVERTISING • SECURE SYSTEMS
-        </p>
+        <div className="flex items-center justify-between mt-8">
+          <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-[#38BDF8] text-[10px] uppercase tracking-widest font-bold transition-colors group">
+            <ArrowLeft size={12} className="group-hover:-translate-x-1 transition-transform" />
+            Back to Site
+          </Link>
+          <p className="text-gray-600 text-[10px] uppercase tracking-widest">
+            &copy; {new Date().getFullYear()} AL-NASIR ADVERTISING
+          </p>
+        </div>
       </motion.div>
     </div>
   );

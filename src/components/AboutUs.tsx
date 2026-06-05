@@ -158,7 +158,7 @@ export default function AboutUs() {
     >
       {/* Premium Gradient Overlays */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[#1B2A4A]/40 via-transparent to-transparent pointer-events-none" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[#2EAB8C]/10 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[#38BDF8]/10 via-transparent to-transparent pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
         {/* ROW 1: Big Map (left) + Heritage Heading & Our Company (right) */}
@@ -172,7 +172,7 @@ export default function AboutUs() {
             className="w-full lg:w-[35%] relative min-h-[380px] md:min-h-[500px] bg-gradient-to-br from-[#111c33] to-[#0a1120] rounded-[2rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex items-center justify-center p-4 md:p-8"
           >
             {/* Ambient Background Glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#2EAB8C]/5 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#38BDF8]/5 via-transparent to-transparent pointer-events-none" />
 
             {/* Map Legend / Key & Zoom Controls */}
             <div className="absolute top-8 right-8 z-20 flex flex-col gap-4">
@@ -189,7 +189,7 @@ export default function AboutUs() {
                   </span>
                 </div>
                 <div className="flex items-center gap-3 pl-1">
-                  <div className="w-3 h-3 rounded-full bg-[#2EAB8C] shadow-[0_0_8px_rgba(46,171,140,0.8)]" />
+                  <div className="w-3 h-3 rounded-full bg-[#38BDF8] shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
                   <span className="text-white text-[10px] font-black uppercase tracking-widest leading-none">
                     Locations
                   </span>
@@ -200,14 +200,14 @@ export default function AboutUs() {
               <div className="flex gap-2 self-end">
                 <button
                   onClick={handleZoomIn}
-                  className="w-10 h-10 bg-[#0a1120]/80 hover:bg-[#2EAB8C] backdrop-blur-md border border-white/10 flex items-center justify-center rounded-xl text-white font-black text-lg transition-colors"
+                  className="w-10 h-10 bg-[#0a1120]/80 hover:bg-[#38BDF8] backdrop-blur-md border border-white/10 flex items-center justify-center rounded-xl text-white font-black text-lg transition-colors"
                   title="Zoom In"
                 >
                   +
                 </button>
                 <button
                   onClick={handleZoomOut}
-                  className="w-10 h-10 bg-[#0a1120]/80 hover:bg-[#2EAB8C] backdrop-blur-md border border-white/10 flex items-center justify-center rounded-xl text-white font-black text-lg transition-colors"
+                  className="w-10 h-10 bg-[#0a1120]/80 hover:bg-[#38BDF8] backdrop-blur-md border border-white/10 flex items-center justify-center rounded-xl text-white font-black text-lg transition-colors"
                   title="Zoom Out"
                 >
                   -
@@ -238,7 +238,7 @@ export default function AboutUs() {
                           key={geo.rsmKey}
                           geography={geo}
                           fill="#0a1120"
-                          stroke="#2EAB8C"
+                          stroke="#38BDF8"
                           strokeWidth={0.5}
                           strokeOpacity={0.5}
                           style={{
@@ -292,13 +292,13 @@ export default function AboutUs() {
                             <>
                               <circle
                                 r={15}
-                                fill="#2EAB8C"
+                                fill="#38BDF8"
                                 fillOpacity={0.4}
                                 className="animate-ping pointer-events-none"
                               />
                               <circle
                                 r={6.5}
-                                fill="#2EAB8C"
+                                fill="#38BDF8"
                                 className="pointer-events-none"
                               />
                               {/* Invisible hit area for reliable hover tightened */}
@@ -342,7 +342,7 @@ export default function AboutUs() {
               <h3 className="text-white font-black text-xl uppercase tracking-widest text-shadow-sm">
                 National Presence
               </h3>
-              <p className="text-[#2EAB8C] font-bold text-xs mt-2 tracking-[0.25em] uppercase">
+              <p className="text-[#38BDF8] font-bold text-xs mt-2 tracking-[0.25em] uppercase">
                 40+ Locations Across Pakistan
               </p>
             </div>
@@ -357,8 +357,8 @@ export default function AboutUs() {
             className="w-full lg:w-[65%] flex flex-col justify-center mt-2 md:mt-0"
           >
             <div className="flex items-center gap-4 mb-6">
-              <span className="w-12 h-[2px] bg-[#2EAB8C]" />
-              <span className="text-[#2EAB8C] text-sm font-black uppercase tracking-[0.4em] drop-shadow-[0_0_10px_rgba(46,171,140,0.5)]">
+              <span className="w-12 h-[2px] bg-[#38BDF8]" />
+              <span className="text-[#38BDF8] text-sm font-black uppercase tracking-[0.4em] drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]">
                 Our Heritage
               </span>
             </div>
@@ -373,10 +373,10 @@ export default function AboutUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="border-l-2 border-[#2EAB8C]/40 pl-6"
+              className="border-l-2 border-[#38BDF8]/40 pl-6"
             >
               <div className="flex items-center gap-3 mb-3">
-                <Building size={18} className="text-[#2EAB8C]" />
+                <Building size={18} className="text-[#38BDF8]" />
                 <h3 className="text-lg md:text-xl font-black text-white uppercase tracking-widest">
                   Our Company
                 </h3>
@@ -399,10 +399,10 @@ export default function AboutUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
-                className="border-l-2 border-[#2EAB8C]/40 pl-6"
+                className="border-l-2 border-[#38BDF8]/40 pl-6"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <Icon size={18} className="text-[#2EAB8C]" />
+                  <Icon size={18} className="text-[#38BDF8]" />
                   <h3 className="text-lg md:text-xl font-black text-white uppercase tracking-widest">
                     {tab.title}
                   </h3>
@@ -426,10 +426,10 @@ export default function AboutUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 + i * 0.15 }}
-                className="border-l-2 border-[#2EAB8C]/40 pl-6"
+                className="border-l-2 border-[#38BDF8]/40 pl-6"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <Icon size={18} className="text-[#2EAB8C]" />
+                  <Icon size={18} className="text-[#38BDF8]" />
                   <h3 className="text-lg md:text-xl font-black text-white uppercase tracking-widest">
                     {tab.title}
                   </h3>
@@ -452,19 +452,19 @@ export default function AboutUs() {
         >
           <div className="flex flex-col gap-2 items-center">
             <Counter from={0} to={30} suffix="+" />
-            <span className="text-[9px] md:text-[10px] text-[#2EAB8C] font-black uppercase tracking-[0.2em] text-center">
+            <span className="text-[9px] md:text-[10px] text-[#38BDF8] font-black uppercase tracking-[0.2em] text-center">
               Years Active
             </span>
           </div>
           <div className="flex flex-col gap-2 items-center">
             <Counter from={0} to={15} suffix="+" />
-            <span className="text-[9px] md:text-[10px] text-[#2EAB8C] font-black uppercase tracking-[0.2em] text-center">
+            <span className="text-[9px] md:text-[10px] text-[#38BDF8] font-black uppercase tracking-[0.2em] text-center">
               Cities
             </span>
           </div>
           <div className="flex flex-col gap-2 items-center">
             <Counter from={0} to={500} suffix="+" />
-            <span className="text-[9px] md:text-[10px] text-[#2EAB8C] font-black uppercase tracking-[0.2em] text-center">
+            <span className="text-[9px] md:text-[10px] text-[#38BDF8] font-black uppercase tracking-[0.2em] text-center">
               Campaigns
             </span>
           </div>

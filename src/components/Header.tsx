@@ -110,7 +110,7 @@ export default function Header() {
                     href={link.href}
                     onClick={() => setActiveLink(link.name)}
                     className={cn(
-                      "flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 px-5 py-2.5 rounded-full relative z-10 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2EAB8C]",
+                      "flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 px-5 py-2.5 rounded-full relative z-10 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#38BDF8]",
                       activeLink === link.name
                         ? "text-[#0a1120]"
                         : "text-gray-300 hover:text-white",
@@ -131,7 +131,7 @@ export default function Header() {
                   {activeLink === link.name && (
                     <motion.div
                       layoutId="navPill"
-                      className="absolute inset-0 bg-gradient-to-r from-[#2EAB8C] to-[#496B88] rounded-full shadow-[0_0_15px_rgba(46,171,140,0.5)]"
+                      className="absolute inset-0 bg-gradient-to-r from-[#38BDF8] to-[#496B88] rounded-full shadow-[0_0_15px_rgba(56,189,248,0.5)]"
                       transition={{
                         type: "spring",
                         bounce: 0.2,
@@ -154,8 +154,8 @@ export default function Header() {
                           }}
                           className="absolute top-[140%] left-1/2 -translate-x-1/2 w-[400px] bg-[#0f172a]/95 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.6)] p-6 overflow-hidden"
                         >
-                          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#2EAB8C] via-white to-[#496B88]" />
-                          <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#2EAB8C]/10 rounded-full blur-3xl pointer-events-none" />
+                          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#38BDF8] via-white to-[#496B88]" />
+                          <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#38BDF8]/10 rounded-full blur-3xl pointer-events-none" />
 
                           <div className="grid grid-cols-2 gap-2 relative z-10">
                             {link.dropdown.map((item) => (
@@ -164,7 +164,7 @@ export default function Header() {
                                 href={item.href}
                                 className="group/item relative flex items-center p-3 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300"
                               >
-                                <div className="absolute left-0 w-1 h-0 bg-[#2EAB8C] group-hover/item:h-1/2 top-1/2 -translate-y-1/2 transition-all duration-300 rounded-full opacity-0 group-hover/item:opacity-100" />
+                                <div className="absolute left-0 w-1 h-0 bg-[#38BDF8] group-hover/item:h-1/2 top-1/2 -translate-y-1/2 transition-all duration-300 rounded-full opacity-0 group-hover/item:opacity-100" />
                                 <span className="text-[10px] font-black text-gray-400 group-hover/item:text-white group-hover/item:pl-2 transition-all duration-300 uppercase tracking-[0.1em]">
                                   {item.name}
                                 </span>
@@ -190,12 +190,12 @@ export default function Header() {
                 className={cn(
                   "group relative inline-flex items-center justify-center px-8 py-3.5 font-black text-white text-xs uppercase tracking-[0.2em] transition-all duration-500 border rounded-full overflow-hidden",
                   activeLink === "contact"
-                    ? "bg-[#2EAB8C] border-[#2EAB8C] shadow-[0_0_15px_rgba(46,171,140,0.5)]"
+                    ? "bg-[#38BDF8] border-[#38BDF8] shadow-[0_0_15px_rgba(56,189,248,0.5)]"
                     : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/30"
                 )}
               >
                 <span className="relative z-10">Contact Us</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#2EAB8C]/20 to-transparent translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#38BDF8]/20 to-transparent translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
               </MagneticButton>
             </div>
 
@@ -206,7 +206,7 @@ export default function Header() {
             >
               <div className="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
               {mobileMenuOpen ? (
-                <X size={32} className="text-[#2EAB8C] relative z-10" />
+                <X size={32} className="text-[#38BDF8] relative z-10" />
               ) : (
                 <Menu size={32} className="relative z-10" />
               )}
@@ -226,12 +226,12 @@ export default function Header() {
             className="fixed inset-0 z-[55] bg-[#0a1120]/95 backdrop-blur-3xl flex flex-col justify-center items-center px-6"
           >
             {/* Decoration */}
-            <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-[#2EAB8C] rounded-full blur-[100px] opacity-20 pointer-events-none" />
+            <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-[#38BDF8] rounded-full blur-[100px] opacity-20 pointer-events-none" />
 
             {/* Close Button */}
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className="absolute top-6 right-6 p-3 bg-white/5 hover:bg-[#2EAB8C] border border-white/10 rounded-full text-white transition-all duration-300 z-10"
+              className="absolute top-6 right-6 p-3 bg-white/5 hover:bg-[#38BDF8] border border-white/10 rounded-full text-white transition-all duration-300 z-10"
             >
               <X size={24} />
             </button>
@@ -246,7 +246,7 @@ export default function Header() {
                 >
                   <Link
                     href={link.href}
-                    className="text-3xl font-black tracking-tighter text-white hover:text-[#2EAB8C] transition-colors uppercase block text-center py-2 focus:outline-none focus:text-[#2EAB8C]"
+                    className="text-3xl font-black tracking-tighter text-white hover:text-[#38BDF8] transition-colors uppercase block text-center py-2 focus:outline-none focus:text-[#38BDF8]"
                     onClick={() => {
                       setMobileMenuOpen(false);
                       setActiveLink(link.name);

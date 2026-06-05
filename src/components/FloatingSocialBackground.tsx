@@ -75,7 +75,7 @@ export default function FloatingSocialBackground() {
       
       {/* Radial Glow in center */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-[#2EAB8C] opacity-10 blur-[100px] rounded-full"></div>
+        <div className="w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-[#38BDF8] opacity-10 blur-[100px] rounded-full"></div>
       </div>
 
       {/* CSS-animated particles instead of framer-motion */}
@@ -99,7 +99,7 @@ export default function FloatingSocialBackground() {
           return (
             <div
               key={p.id}
-              className="absolute text-[#2EAB8C] float-particle"
+              className="absolute text-[#38BDF8] float-particle"
               style={{
                 left: `${p.startX}vw`,
                 top: `${p.startY}vh`,

@@ -55,7 +55,7 @@ export default function CityPresencePage() {
   if (loading) {
     return (
       <main className="min-h-screen bg-[#0a1120] flex items-center justify-center">
-        <Loader2 className="animate-spin text-[#2EAB8C]" size={40} />
+        <Loader2 className="animate-spin text-[#38BDF8]" size={40} />
       </main>
     );
   }
@@ -63,9 +63,9 @@ export default function CityPresencePage() {
   if (!city) {
     return (
       <main className="min-h-screen bg-[#0a1120] flex flex-col items-center justify-center gap-6 text-white">
-        <MapPin size={48} className="text-[#2EAB8C]/40" />
+        <MapPin size={48} className="text-[#38BDF8]/40" />
         <h1 className="text-3xl font-black uppercase tracking-tighter">City Not Found</h1>
-        <Link href="/#presence" className="text-[#2EAB8C] font-bold uppercase tracking-widest text-sm hover:underline flex items-center gap-2">
+        <Link href="/#presence" className="text-[#38BDF8] font-bold uppercase tracking-widest text-sm hover:underline flex items-center gap-2">
           <ArrowLeft size={16} /> Back to Presence
         </Link>
       </main>
@@ -97,15 +97,15 @@ export default function CityPresencePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full pb-16">
           <Link
             href="/#presence"
-            className="inline-flex items-center gap-2 text-[#2EAB8C] font-bold text-xs uppercase tracking-[0.2em] mb-10 hover:gap-4 transition-all duration-300"
+            className="inline-flex items-center gap-2 text-[#38BDF8] font-bold text-xs uppercase tracking-[0.2em] mb-10 hover:gap-4 transition-all duration-300"
           >
             <ArrowLeft size={16} /> Back to Presence
           </Link>
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-10 h-[2px] bg-[#2EAB8C]" />
-              <span className="text-[#2EAB8C] text-xs font-black uppercase tracking-[0.3em]">Operational Hub</span>
+              <span className="w-10 h-[2px] bg-[#38BDF8]" />
+              <span className="text-[#38BDF8] text-xs font-black uppercase tracking-[0.3em]">Operational Hub</span>
             </div>
             <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-4">
               {city.name}
@@ -140,7 +140,7 @@ export default function CityPresencePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.07 }}
-                  className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 hover:border-[#2EAB8C]/30 transition-all duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+                  className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 hover:border-[#38BDF8]/30 transition-all duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
                 >
                   <Image
                     src={img.image_url}
@@ -154,7 +154,7 @@ export default function CityPresencePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120] via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
 
                   <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <div className="flex items-center gap-2 mb-1 text-[#2EAB8C]">
+                    <div className="flex items-center gap-2 mb-1 text-[#38BDF8]">
                       <Camera size={12} />
                       <span className="text-[9px] font-black uppercase tracking-[0.2em]">Placement View</span>
                     </div>
@@ -172,7 +172,7 @@ export default function CityPresencePage() {
       {/* CTA */}
       <section className="pb-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
         <div className="bg-gradient-to-r from-[#1B2A4A] to-[#0a1120] rounded-[3rem] p-12 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/5 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#2EAB8C]/10 blur-[80px] rounded-full pointer-events-none" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#38BDF8]/10 blur-[80px] rounded-full pointer-events-none" />
           <div className="relative z-10">
             <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-3">
               Book a Campaign in {city.name}
@@ -183,7 +183,7 @@ export default function CityPresencePage() {
           </div>
           <Link
             href="/#contact"
-            className="relative z-10 shrink-0 inline-flex items-center gap-3 bg-[#2EAB8C] hover:bg-white text-white hover:text-[#0a1120] px-8 py-4 rounded-full font-black uppercase tracking-widest text-sm transition-all duration-300 hover:scale-105"
+            className="relative z-10 shrink-0 inline-flex items-center gap-3 bg-[#38BDF8] hover:bg-white text-white hover:text-[#0a1120] px-8 py-4 rounded-full font-black uppercase tracking-widest text-sm transition-all duration-300 hover:scale-105"
           >
             Request Inventory <ArrowLeft size={16} className="rotate-180" />
           </Link>

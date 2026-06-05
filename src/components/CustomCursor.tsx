@@ -37,7 +37,7 @@ export default function CustomCursor() {
         }
         if (circleRef.current) {
           circleRef.current.style.transform = `translate(${circlePos.current.x - 20}px, ${circlePos.current.y - 20}px) scale(${hovering ? 1.5 : 1})`;
-          circleRef.current.style.backgroundColor = hovering ? 'rgba(46, 171, 140, 0.2)' : 'rgba(46, 171, 140, 0.05)';
+          circleRef.current.style.backgroundColor = hovering ? 'rgba(56,189,248, 0.2)' : 'rgba(56,189,248, 0.05)';
         }
       }
     };
@@ -78,14 +78,14 @@ export default function CustomCursor() {
       {/* Small dot that exactly follows the cursor */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-2 h-2 bg-[#2EAB8C] rounded-full pointer-events-none z-[999999]"
+        className="fixed top-0 left-0 w-2 h-2 bg-[#38BDF8] rounded-full pointer-events-none z-[999999]"
         style={{ willChange: 'transform' }}
       />
       
       {/* Larger trailing circle */}
       <div
         ref={circleRef}
-        className="fixed top-0 left-0 w-10 h-10 border border-[#2EAB8C]/50 rounded-full pointer-events-none z-[999998] bg-[#2EAB8C]/5"
+        className="fixed top-0 left-0 w-10 h-10 border border-[#38BDF8]/50 rounded-full pointer-events-none z-[999998] bg-[#38BDF8]/5"
         style={{ willChange: 'transform', transition: 'background-color 0.3s' }}
       />
     </>

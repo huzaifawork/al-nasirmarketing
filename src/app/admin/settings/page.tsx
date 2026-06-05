@@ -49,7 +49,7 @@ export default function SettingsAdmin() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <Loader2 className="animate-spin text-[#2EAB8C]" size={32} />
+        <Loader2 className="animate-spin text-[#38BDF8]" size={32} />
       </div>
     );
   }
@@ -65,7 +65,7 @@ export default function SettingsAdmin() {
         {/* Branding & Tagline */}
         <section className="bg-white/[0.03] border border-white/10 rounded-3xl p-8">
           <div className="flex items-center gap-3 mb-8">
-             <div className="p-2 bg-[#2EAB8C]/10 text-[#2EAB8C] rounded-lg">
+             <div className="p-2 bg-[#38BDF8]/10 text-[#38BDF8] rounded-lg">
                <Type size={20} />
              </div>
              <h2 className="text-xl font-black uppercase tracking-tight">Core Branding</h2>
@@ -79,11 +79,11 @@ export default function SettingsAdmin() {
                   type="text" 
                   value={settings.tagline}
                   onChange={(e) => setSettings({ ...settings, tagline: e.target.value })}
-                  className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all"
+                  className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
                 />
                 <button 
                   onClick={() => handleSave('tagline', settings.tagline)}
-                  className="bg-[#2EAB8C] hover:bg-[#258f75] text-white px-6 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all"
+                  className="bg-[#38BDF8] hover:bg-[#258f75] text-white px-6 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all"
                 >
                   Update
                 </button>
@@ -95,7 +95,7 @@ export default function SettingsAdmin() {
         {/* About Section Text */}
         <section className="bg-white/[0.03] border border-white/10 rounded-3xl p-8">
           <div className="flex items-center gap-3 mb-8">
-             <div className="p-2 bg-[#2EAB8C]/10 text-[#2EAB8C] rounded-lg">
+             <div className="p-2 bg-[#38BDF8]/10 text-[#38BDF8] rounded-lg">
                <Info size={20} />
              </div>
              <h2 className="text-xl font-black uppercase tracking-tight">About Agency Content</h2>
@@ -107,13 +107,13 @@ export default function SettingsAdmin() {
               <textarea 
                 value={settings.about_text}
                 onChange={(e) => setSettings({ ...settings, about_text: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-[#2EAB8C] transition-all min-h-[150px] text-sm leading-relaxed"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-[#38BDF8] transition-all min-h-[150px] text-sm leading-relaxed"
                 placeholder="Tell the agency story..."
               />
               <div className="flex justify-end">
                 <button 
                   onClick={() => handleSave('about_text', settings.about_text)}
-                  className="bg-[#2EAB8C] hover:bg-[#258f75] text-white px-8 py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all"
+                  className="bg-[#38BDF8] hover:bg-[#258f75] text-white px-8 py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all"
                 >
                   Save Story
                 </button>
@@ -125,13 +125,13 @@ export default function SettingsAdmin() {
               <textarea 
                 value={settings.mission_text}
                 onChange={(e) => setSettings({ ...settings, mission_text: e.target.value })}
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-[#2EAB8C] transition-all min-h-[100px] text-sm leading-relaxed"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-[#38BDF8] transition-all min-h-[100px] text-sm leading-relaxed"
                 placeholder="Define the agency mission..."
               />
               <div className="flex justify-end">
                 <button 
                   onClick={() => handleSave('mission_text', settings.mission_text)}
-                  className="bg-[#2EAB8C] hover:bg-[#258f75] text-white px-8 py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all"
+                  className="bg-[#38BDF8] hover:bg-[#258f75] text-white px-8 py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest transition-all"
                 >
                   Save Mission
                 </button>
@@ -153,7 +153,7 @@ export default function SettingsAdmin() {
       </div>
       
       {saving && (
-        <div className="fixed bottom-10 right-10 bg-[#2EAB8C] text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 animate-bounce">
+        <div className="fixed bottom-10 right-10 bg-[#38BDF8] text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 animate-bounce">
           <Loader2 className="animate-spin" size={18} />
           <span className="text-[10px] font-black uppercase tracking-widest">Saving Changes...</span>
         </div>

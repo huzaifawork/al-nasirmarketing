@@ -1,8 +1,7 @@
 "use client";
 import React, { useEffect, useState, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
-import { Plus, UserCircle, Trash2, Edit3, Loader2, X, Save, Quote } from 'lucide-react';
-import { FaLinkedinIn } from 'react-icons/fa';
+import { Plus, UserCircle, Trash2, Edit3, Loader2, X, Save, Quote, Mail } from 'lucide-react';
 import ImageUpload from '@/components/ImageUpload';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -14,7 +13,7 @@ type TeamMember = {
   department: string;
   photo_url: string | null;
   quote: string | null;
-  linkedin_url: string | null;
+  email: string | null;
   fun_fact: string | null;
   sort_order: number;
 };
@@ -52,7 +51,7 @@ export default function TeamAdmin() {
       department: editingMember.department,
       photo_url: editingMember.photo_url || '',
       quote: editingMember.quote || '',
-      linkedin_url: editingMember.linkedin_url || '',
+      email: editingMember.email || '',
       fun_fact: editingMember.fun_fact || '',
       sort_order: editingMember.sort_order || 0
     };
@@ -86,7 +85,7 @@ export default function TeamAdmin() {
   const getDeptColor = (dept: string) => {
     switch (dept) {
       case 'Leadership': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
-      case 'Creative': return 'bg-[#2EAB8C]/20 text-[#2EAB8C] border-[#2EAB8C]/30';
+      case 'Creative': return 'bg-[#38BDF8]/20 text-[#38BDF8] border-[#38BDF8]/30';
       case 'Digital': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
       default: return 'bg-white/10 text-gray-400 border-white/5';
     }
@@ -104,7 +103,7 @@ export default function TeamAdmin() {
             setEditingMember({ name: '', role: '', department: 'Leadership', sort_order: 0 });
             setIsModalOpen(true);
           }}
-          className="flex items-center gap-2 bg-[#2EAB8C] hover:bg-[#258f75] text-white px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(46,171,140,0.2)]"
+          className="flex items-center gap-2 bg-[#38BDF8] hover:bg-[#258f75] text-white px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(56,189,248,0.2)]"
         >
           <Plus size={18} />
           <span>Add Member</span>
@@ -113,7 +112,7 @@ export default function TeamAdmin() {
 
       {loading ? (
         <div className="flex items-center justify-center h-64">
-          <Loader2 className="animate-spin text-[#2EAB8C]" size={32} />
+          <Loader2 className="animate-spin text-[#38BDF8]" size={32} />
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -121,7 +120,7 @@ export default function TeamAdmin() {
             <motion.div
               layout
               key={member.id}
-              className="bg-white/[0.03] border border-white/10 rounded-3xl p-8 group hover:border-[#2EAB8C]/30 transition-all flex flex-col items-center text-center relative overflow-hidden"
+              className="bg-white/[0.03] border border-white/10 rounded-3xl p-8 group hover:border-[#38BDF8]/30 transition-all flex flex-col items-center text-center relative overflow-hidden"
             >
               <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 <button 
@@ -129,7 +128,7 @@ export default function TeamAdmin() {
                     setEditingMember(member);
                     setIsModalOpen(true);
                   }}
-                  className="p-2 bg-[#121d36] hover:bg-[#2EAB8C] text-white rounded-lg transition-colors shadow-xl"
+                  className="p-2 bg-[#121d36] hover:bg-[#38BDF8] text-white rounded-lg transition-colors shadow-xl"
                 >
                   <Edit3 size={16} />
                 </button>
@@ -141,7 +140,7 @@ export default function TeamAdmin() {
                 </button>
               </div>
 
-              <div className="w-24 h-24 rounded-full border-2 border-[#2EAB8C] p-1 mb-6 relative overflow-hidden">
+              <div className="w-24 h-24 rounded-full border-2 border-[#38BDF8] p-1 mb-6 relative overflow-hidden">
                 {member.photo_url ? (
                   <img src={member.photo_url} alt={member.name} className="w-full h-full object-cover rounded-full" />
                 ) : (
@@ -152,7 +151,7 @@ export default function TeamAdmin() {
               </div>
 
               <h3 className="text-xl font-black text-white uppercase tracking-tight mb-1">{member.name}</h3>
-              <p className="text-[#2EAB8C] text-[10px] font-black uppercase tracking-[0.2em] mb-4">{member.role}</p>
+              <p className="text-[#38BDF8] text-[10px] font-black uppercase tracking-[0.2em] mb-4">{member.role}</p>
 
               <span className={cn(
                 "px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-[0.2em] border mb-6",
@@ -163,7 +162,7 @@ export default function TeamAdmin() {
 
               {member.quote && (
                 <div className="relative pt-6 border-t border-white/5 w-full">
-                  <Quote size={16} className="text-[#2EAB8C] absolute top-[-8px] left-1/2 -translate-x-1/2 bg-[#0d1627] px-1" />
+                  <Quote size={16} className="text-[#38BDF8] absolute top-[-8px] left-1/2 -translate-x-1/2 bg-[#0d1627] px-1" />
                   <p className="text-gray-400 text-xs italic leading-relaxed line-clamp-2">
                     &quot;{member.quote}&quot;
                   </p>
@@ -189,9 +188,9 @@ export default function TeamAdmin() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl bg-[#0d1627] border border-white/10 rounded-3xl shadow-2xl overflow-hidden"
+              className="relative w-full max-w-2xl bg-[#0d1627] border border-white/10 rounded-3xl shadow-2xl flex flex-col max-h-[90vh]"
             >
-              <div className="p-8 border-b border-white/5 flex justify-between items-center bg-[#121d36]">
+              <div className="p-8 border-b border-white/5 flex justify-between items-center bg-[#121d36] rounded-t-3xl shrink-0">
                 <h2 className="text-2xl font-black uppercase tracking-tighter">
                   {editingMember?.id ? 'Edit Member' : 'Add New Member'}
                 </h2>
@@ -200,7 +199,7 @@ export default function TeamAdmin() {
                 </button>
               </div>
 
-              <form onSubmit={handleSave} className="p-8 space-y-6 max-h-[70vh] overflow-y-auto">
+              <form onSubmit={handleSave} className="p-8 space-y-6 overflow-y-auto flex-1">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Full Name</label>
@@ -208,7 +207,7 @@ export default function TeamAdmin() {
                       type="text" 
                       value={editingMember?.name || ''}
                       onChange={(e) => setEditingMember({ ...editingMember, name: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
                       required
                     />
                   </div>
@@ -218,7 +217,7 @@ export default function TeamAdmin() {
                       type="text" 
                       value={editingMember?.role || ''}
                       onChange={(e) => setEditingMember({ ...editingMember, role: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
                       required
                     />
                   </div>
@@ -230,7 +229,7 @@ export default function TeamAdmin() {
                     <select 
                       value={editingMember?.department || 'Leadership'}
                       onChange={(e) => setEditingMember({ ...editingMember, department: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all appearance-none"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all appearance-none"
                     >
                       <option value="Leadership">Leadership</option>
                       <option value="Creative">Creative</option>
@@ -238,15 +237,15 @@ export default function TeamAdmin() {
                     </select>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">LinkedIn URL</label>
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Email Address</label>
                     <div className="relative">
-                      <FaLinkedinIn className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={16} />
+                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={16} />
                       <input 
-                        type="url" 
-                        value={editingMember?.linkedin_url || ''}
-                        onChange={(e) => setEditingMember({ ...editingMember, linkedin_url: e.target.value })}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all"
-                        placeholder="https://linkedin.com/in/..."
+                        type="email" 
+                        value={editingMember?.email || ''}
+                        onChange={(e) => setEditingMember({ ...editingMember, email: e.target.value })}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
+                        placeholder="member@alnasir.pk"
                       />
                     </div>
                   </div>
@@ -264,7 +263,7 @@ export default function TeamAdmin() {
                   <textarea 
                     value={editingMember?.quote || ''}
                     onChange={(e) => setEditingMember({ ...editingMember, quote: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all min-h-[100px]"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all min-h-[100px]"
                     placeholder="A short motto or quote..."
                   />
                 </div>
@@ -276,7 +275,7 @@ export default function TeamAdmin() {
                       type="text" 
                       value={editingMember?.fun_fact || ''}
                       onChange={(e) => setEditingMember({ ...editingMember, fun_fact: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
                     />
                   </div>
                   <div className="space-y-2">
@@ -285,7 +284,7 @@ export default function TeamAdmin() {
                       type="number" 
                       value={editingMember?.sort_order || 0}
                       onChange={(e) => setEditingMember({ ...editingMember, sort_order: parseInt(e.target.value) })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
                     />
                   </div>
                 </div>
@@ -294,7 +293,7 @@ export default function TeamAdmin() {
                   <button
                     type="submit"
                     disabled={saving}
-                    className="flex-1 bg-[#2EAB8C] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2"
+                    className="flex-1 bg-[#38BDF8] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2"
                   >
                     {saving ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
                     <span>{editingMember?.id ? 'Update Member' : 'Add to Team'}</span>

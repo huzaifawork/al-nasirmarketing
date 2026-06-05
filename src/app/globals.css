@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #496B88;
-  --color-sea-green: #2EAB8C;
-  --color-deep-navy: #1B2A4A;
+  --color-navy: #496b88;
+  --color-sea-green: #38bdf8;
+  --color-deep-navy: #1b2a4a;
 }
 
 @layer base {
@@ -31,8 +31,12 @@
 
 /* Animations */
 @keyframes ken-burns {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.15); }
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.15);
+  }
 }
 
 .animate-ken-burns {
@@ -40,8 +44,12 @@
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {
@@ -62,16 +70,21 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #1B2A4A;
+  background: #0a1120;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2EAB8C;
+  background: #496b88;
   border-radius: 10px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
+}
+
 /* Lenis Smooth Scroll Base Styles */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -99,28 +112,40 @@ html.lenis, html.lenis body {
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(46, 171, 140, 0.3);
+  background: rgba(56, 189, 248, 0.3);
   border-radius: 10px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(46, 171, 140, 0.8);
+  background: rgba(56, 189, 248, 0.8);
 }
 
 /* MediaStrip Marquee Animation */
 @keyframes mediastrip-marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-33.333%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Shimmer animation for buttons */
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* Performance: GPU compositing hints for heavy sections */
@@ -130,7 +155,9 @@ section {
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

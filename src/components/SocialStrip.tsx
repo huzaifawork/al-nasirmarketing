@@ -1,15 +1,13 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaInstagram, FaLinkedinIn, FaYoutube, FaFacebookF } from 'react-icons/fa';
+import { FaInstagram, FaFacebookF } from 'react-icons/fa';
 import Link from 'next/link';
 
 export default function SocialStrip() {
   const socials = [
-    { icon: FaLinkedinIn, href: "#", label: "LinkedIn" },
-    { icon: FaInstagram, href: "#", label: "Instagram" },
-    { icon: FaYoutube, href: "#", label: "YouTube" },
-    { icon: FaFacebookF, href: "#", label: "Facebook" },
+    { icon: FaFacebookF, href: "https://www.facebook.com/share/14iK4EaoQR4/?mibextid=wwXIfr", label: "Facebook" },
+    { icon: FaInstagram, href: "https://www.instagram.com/alnasiradvertising?igsh=MWRuYTUwcjJ5eTd6MQ%3D%3D&utm_source=qr", label: "Instagram" },
   ];
 
   return (
@@ -25,16 +23,18 @@ export default function SocialStrip() {
             key={i} 
             href={social.href}
             aria-label={social.label}
-            className="text-white/30 hover:text-[#2EAB8C] transition-all duration-500 hover:scale-150 transform-gpu group relative"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/30 hover:text-[#38BDF8] transition-all duration-500 hover:scale-150 transform-gpu group relative"
           >
             <social.icon size={18} />
-            <span className="absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-1 bg-[#2EAB8C] rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
+            <span className="absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-1 bg-[#38BDF8] rounded-full scale-0 group-hover:scale-100 transition-transform duration-300" />
           </Link>
         ))}
       </div>
 
       <div className="flex flex-col items-center gap-6 group cursor-default">
-        <div className="w-[1px] h-20 bg-gradient-to-b from-[#2EAB8C]/50 via-white/10 to-transparent transition-all duration-700 group-hover:h-24 group-hover:from-[#2EAB8C]" />
+        <div className="w-[1px] h-20 bg-gradient-to-b from-[#38BDF8]/50 via-white/10 to-transparent transition-all duration-700 group-hover:h-24 group-hover:from-[#38BDF8]" />
         <span 
           className="text-white/20 group-hover:text-white/60 transition-colors duration-500 text-[11px] font-black uppercase tracking-[0.6em] [writing-mode:vertical-lr] whitespace-nowrap py-4"
         >

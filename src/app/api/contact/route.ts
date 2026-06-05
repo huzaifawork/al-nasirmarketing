@@ -22,8 +22,8 @@ export async function POST(req: NextRequest) {
       subject: `New Inquiry: ${service_interest} — ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a1120; color: #ffffff; padding: 40px; border-radius: 16px;">
-          <div style="border-bottom: 2px solid #2EAB8C; padding-bottom: 20px; margin-bottom: 30px;">
-            <h1 style="color: #2EAB8C; font-size: 24px; margin: 0; text-transform: uppercase; letter-spacing: 2px;">New Project Inquiry</h1>
+          <div style="border-bottom: 2px solid #38BDF8; padding-bottom: 20px; margin-bottom: 30px;">
+            <h1 style="color: #38BDF8; font-size: 24px; margin: 0; text-transform: uppercase; letter-spacing: 2px;">New Project Inquiry</h1>
             <p style="color: #888; margin: 8px 0 0; font-size: 13px;">Al-Nasir Advertising — Contact Form</p>
           </div>
 
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
             </tr>` : ''}
             <tr>
               <td style="padding: 10px 0; color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Email</td>
-              <td style="padding: 10px 0;"><a href="mailto:${email}" style="color: #2EAB8C; font-size: 15px;">${email}</a></td>
+              <td style="padding: 10px 0;"><a href="mailto:${email}" style="color: #38BDF8; font-size: 15px;">${email}</a></td>
             </tr>
             ${phone ? `<tr>
               <td style="padding: 10px 0; color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Phone</td>
@@ -47,12 +47,12 @@ export async function POST(req: NextRequest) {
             <tr>
               <td style="padding: 10px 0; color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Service</td>
               <td style="padding: 10px 0;">
-                <span style="background: #2EAB8C; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">${service_interest}</span>
+                <span style="background: #38BDF8; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">${service_interest}</span>
               </td>
             </tr>
           </table>
 
-          <div style="margin-top: 30px; padding: 20px; background: #111c33; border-radius: 12px; border-left: 3px solid #2EAB8C;">
+          <div style="margin-top: 30px; padding: 20px; background: #111c33; border-radius: 12px; border-left: 3px solid #38BDF8;">
             <p style="color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px;">Message</p>
             <p style="color: #fff; font-size: 15px; line-height: 1.7; margin: 0;">${message.replace(/\n/g, '<br/>')}</p>
           </div>

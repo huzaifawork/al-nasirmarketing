@@ -99,7 +99,7 @@ export default function PresenceAdmin() {
         </div>
         <button
           onClick={() => setCityModal({ name: "", slug: "", sort_order: 0 })}
-          className="flex items-center gap-2 bg-[#2EAB8C] hover:bg-[#258f75] text-white px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(46,171,140,0.2)]"
+          className="flex items-center gap-2 bg-[#38BDF8] hover:bg-[#258f75] text-white px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(56,189,248,0.2)]"
         >
           <Plus size={18} /> Add New City
         </button>
@@ -107,7 +107,7 @@ export default function PresenceAdmin() {
 
       {loading ? (
         <div className="flex items-center justify-center h-64">
-          <Loader2 className="animate-spin text-[#2EAB8C]" size={32} />
+          <Loader2 className="animate-spin text-[#38BDF8]" size={32} />
         </div>
       ) : cities.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-64 border border-dashed border-white/10 rounded-3xl gap-4">
@@ -119,7 +119,7 @@ export default function PresenceAdmin() {
           {cities.map((city) => (
             <motion.div layout key={city.id} className="bg-white/[0.03] border border-white/10 rounded-3xl overflow-hidden hover:border-white/20 transition-all">
               {/* City Row */}
-              <div className="flex items-center gap-4 p-5">
+              <div className="flex flex-wrap items-center gap-4 p-5">
                 {/* Cover thumb */}
                 <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 bg-white/5 border border-white/10">
                   {city.cover_image_url ? (
@@ -133,11 +133,11 @@ export default function PresenceAdmin() {
 
                 <div className="flex-1 min-w-0">
                   <h3 className="text-white font-black uppercase tracking-tight text-lg">{city.name}</h3>
-                  <p className="text-[#2EAB8C] text-[10px] font-bold uppercase tracking-widest">/presence/{city.slug}</p>
+                  <p className="text-[#38BDF8] text-[10px] font-bold uppercase tracking-widest">/presence/{city.slug}</p>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
-                  <Link href={`/presence/${city.slug}`} target="_blank" className="p-2.5 bg-white/5 hover:bg-white/10 rounded-xl text-gray-400 hover:text-[#2EAB8C] transition-all" title="View Page">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <Link href={`/presence/${city.slug}`} target="_blank" className="p-2.5 bg-white/5 hover:bg-white/10 rounded-xl text-gray-400 hover:text-[#38BDF8] transition-all" title="View Page">
                     <ExternalLink size={16} />
                   </Link>
                   <button onClick={() => setCityModal(city)} className="p-2.5 bg-white/5 hover:bg-white/10 rounded-xl text-gray-400 hover:text-white transition-all" title="Edit">
@@ -148,7 +148,7 @@ export default function PresenceAdmin() {
                   </button>
                   <button
                     onClick={() => handleToggleCity(city.id)}
-                    className="flex items-center gap-2 px-4 py-2.5 bg-[#2EAB8C]/10 hover:bg-[#2EAB8C]/20 border border-[#2EAB8C]/20 rounded-xl text-[#2EAB8C] text-[10px] font-black uppercase tracking-widest transition-all"
+                    className="flex items-center gap-2 px-4 py-2.5 bg-[#38BDF8]/10 hover:bg-[#38BDF8]/20 border border-[#38BDF8]/20 rounded-xl text-[#38BDF8] text-[10px] font-black uppercase tracking-widest transition-all"
                   >
                     Images {expandedCity === city.id ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                   </button>
@@ -172,14 +172,14 @@ export default function PresenceAdmin() {
                         </span>
                         <button
                           onClick={() => setImageModal({ cityId: city.id, cityName: city.name })}
-                          className="flex items-center gap-2 bg-white/5 hover:bg-[#2EAB8C] border border-white/10 hover:border-[#2EAB8C] px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all"
+                          className="flex items-center gap-2 bg-white/5 hover:bg-[#38BDF8] border border-white/10 hover:border-[#38BDF8] px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all"
                         >
                           <Plus size={14} /> Add Image
                         </button>
                       </div>
 
                       {!images[city.id] ? (
-                        <div className="flex justify-center py-8"><Loader2 className="animate-spin text-[#2EAB8C]" size={24} /></div>
+                        <div className="flex justify-center py-8"><Loader2 className="animate-spin text-[#38BDF8]" size={24} /></div>
                       ) : images[city.id].length === 0 ? (
                         <div className="text-center py-8 text-gray-600 text-sm font-bold uppercase tracking-widest">No images yet</div>
                       ) : (
@@ -224,11 +224,11 @@ export default function PresenceAdmin() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">City Name</label>
-                    <input type="text" value={cityModal.name || ""} onChange={(e) => setCityModal({ ...cityModal, name: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all" placeholder="e.g. Lahore" required />
+                    <input type="text" value={cityModal.name || ""} onChange={(e) => setCityModal({ ...cityModal, name: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" placeholder="e.g. Lahore" required />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Slug</label>
-                    <input type="text" value={cityModal.slug || ""} onChange={(e) => setCityModal({ ...cityModal, slug: e.target.value.toLowerCase().replace(/ /g, "-") })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all" placeholder="e.g. lahore" required />
+                    <input type="text" value={cityModal.slug || ""} onChange={(e) => setCityModal({ ...cityModal, slug: e.target.value.toLowerCase().replace(/ /g, "-") })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" placeholder="e.g. lahore" required />
                   </div>
                 </div>
                 <ImageUpload
@@ -239,9 +239,9 @@ export default function PresenceAdmin() {
                 />
                 <div className="space-y-2 w-32">
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Sort Order</label>
-                  <input type="number" value={cityModal.sort_order || 0} onChange={(e) => setCityModal({ ...cityModal, sort_order: parseInt(e.target.value) || 0 })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all" />
+                  <input type="number" value={cityModal.sort_order || 0} onChange={(e) => setCityModal({ ...cityModal, sort_order: parseInt(e.target.value) || 0 })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" />
                 </div>
-                <button type="submit" disabled={saving} className="w-full bg-[#2EAB8C] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
+                <button type="submit" disabled={saving} className="w-full bg-[#38BDF8] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
                   {saving ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
                   {cityModal.id ? "Update City" : "Create City"}
                 </button>
@@ -270,13 +270,13 @@ export default function PresenceAdmin() {
                 />
                 <div className="space-y-2">
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Caption (Optional)</label>
-                  <input type="text" value={imageForm.caption} onChange={(e) => setImageForm({ ...imageForm, caption: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all" placeholder="e.g. Liberty Roundabout Billboard" />
+                  <input type="text" value={imageForm.caption} onChange={(e) => setImageForm({ ...imageForm, caption: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" placeholder="e.g. Liberty Roundabout Billboard" />
                 </div>
                 <div className="space-y-2 w-32">
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Sort Order</label>
-                  <input type="number" value={imageForm.sort_order} onChange={(e) => setImageForm({ ...imageForm, sort_order: parseInt(e.target.value) || 0 })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all" />
+                  <input type="number" value={imageForm.sort_order} onChange={(e) => setImageForm({ ...imageForm, sort_order: parseInt(e.target.value) || 0 })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" />
                 </div>
-                <button type="submit" disabled={saving} className="w-full bg-[#2EAB8C] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
+                <button type="submit" disabled={saving} className="w-full bg-[#38BDF8] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
                   {saving ? <Loader2 className="animate-spin" size={18} /> : <ImageIcon size={18} />}
                   Add Image
                 </button>

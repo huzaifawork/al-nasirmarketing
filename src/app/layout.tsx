@@ -36,7 +36,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[#0a1120] text-gray-100 selection:bg-[#2EAB8C]/30 selection:text-white relative z-0 md:cursor-none">
+      <body className="min-h-full flex flex-col bg-[#0a1120] text-gray-100 selection:bg-[#38BDF8]/30 selection:text-white relative z-0 md:cursor-none">
         <SiteShell />
         <LayoutEffects />
         <main className="flex-grow">

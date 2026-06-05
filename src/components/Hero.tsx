@@ -11,7 +11,7 @@ const defaultSlides = [
     image: "/hero-section-images/fawarachowk carousel.png",
     label: "MARKETING REDEFINED",
     title: "AL-NASIR ADVERTISING",
-    subtitle: "Established Since 1994",
+    subtitle: "Since 1994",
   },
   {
     image: "/hero-section-images/mehranimagecarousel.png",
@@ -29,7 +29,7 @@ const defaultSlides = [
     image: "/hero-section-images/night-image2.png",
     label: "NATIONWIDE REACH",
     title: "BEYOND THE HORIZON",
-    subtitle: "From Abbottabad to Karachi — We Cover It All",
+    subtitle: "The North Specialist",
   },
 ];
 
@@ -107,8 +107,8 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
                 className="flex items-center gap-3"
               >
-                <span className="w-6 md:w-16 h-[2px] bg-[#2EAB8C]" />
-                <span className="text-[#2EAB8C] text-[10px] md:text-sm font-bold uppercase tracking-[0.25em] md:tracking-[0.3em]">
+                <span className="w-6 md:w-16 h-[2px] bg-[#38BDF8]" />
+                <span className="text-[#38BDF8] text-[10px] md:text-sm font-bold uppercase tracking-[0.25em] md:tracking-[0.3em]">
                   {defaultSlides[currentSlide].label}
                 </span>
               </motion.div>
@@ -146,7 +146,7 @@ export default function Hero() {
                   onClick={() =>
                     document.getElementById("services")?.scrollIntoView()
                   }
-                  className="group relative inline-flex flex-nowrap items-center justify-center gap-3 px-6 md:px-8 py-3.5 md:py-4 font-bold text-white transition-all duration-500 bg-[#2EAB8C] rounded-[2rem] overflow-hidden hover:scale-105 whitespace-nowrap text-sm"
+                  className="group relative inline-flex flex-nowrap items-center justify-center gap-3 px-6 md:px-8 py-3.5 md:py-4 font-bold text-white transition-all duration-500 bg-[#38BDF8] rounded-[2rem] overflow-hidden hover:scale-105 whitespace-nowrap text-sm"
                 >
                   <span className="tracking-[0.15em] uppercase text-xs sm:text-sm relative z-10 whitespace-nowrap">
                     Explore Our Work
@@ -175,10 +175,10 @@ export default function Hero() {
                 initial={{ x: "-100%" }}
                 animate={{ x: "0%" }}
                 transition={{ duration: 5, ease: "linear" }}
-                className="absolute inset-0 bg-[#2EAB8C] shadow-[0_0_10px_rgba(46,171,140,0.8)]"
+                className="absolute inset-0 bg-[#38BDF8] shadow-[0_0_10px_rgba(56,189,248,0.8)]"
               />
             )}
-            <div className="absolute inset-0 bg-[#2EAB8C]/40 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-[#38BDF8]/40 opacity-0 group-hover:opacity-100 transition-opacity" />
           </button>
         ))}
       </div>

@@ -67,7 +67,7 @@ export default function MediaAdmin() {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 bg-[#2EAB8C] hover:bg-[#258f75] text-white px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(46,171,140,0.2)]"
+          className="flex items-center gap-2 bg-[#38BDF8] hover:bg-[#258f75] text-white px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(56,189,248,0.2)]"
         >
           <Plus size={18} />
           <span>Add Image</span>
@@ -76,7 +76,7 @@ export default function MediaAdmin() {
 
       {loading ? (
         <div className="flex items-center justify-center h-64">
-          <Loader2 className="animate-spin text-[#2EAB8C]" size={32} />
+          <Loader2 className="animate-spin text-[#38BDF8]" size={32} />
         </div>
       ) : items.length === 0 ? (
         <div className="flex flex-col items-center justify-center h-64 border border-dashed border-white/10 rounded-3xl gap-4">
@@ -84,7 +84,7 @@ export default function MediaAdmin() {
           <p className="text-gray-500 text-sm font-bold uppercase tracking-widest">No images yet</p>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="text-[#2EAB8C] text-xs font-black uppercase tracking-widest hover:underline"
+            className="text-[#38BDF8] text-xs font-black uppercase tracking-widest hover:underline"
           >
             Add your first image
           </button>
@@ -95,7 +95,7 @@ export default function MediaAdmin() {
             <motion.div
               layout
               key={item.id}
-              className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] hover:border-[#2EAB8C]/30 transition-all"
+              className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] hover:border-[#38BDF8]/30 transition-all"
             >
               <div className="relative aspect-video">
                 <img
@@ -116,7 +116,7 @@ export default function MediaAdmin() {
                 <span className="text-xs text-gray-400 truncate font-medium">
                   {item.caption || "No caption"}
                 </span>
-                <span className="text-[10px] text-[#2EAB8C] font-black shrink-0">#{item.sort_order}</span>
+                <span className="text-[10px] text-[#38BDF8] font-black shrink-0">#{item.sort_order}</span>
               </div>
             </motion.div>
           ))}
@@ -163,7 +163,7 @@ export default function MediaAdmin() {
                     type="text"
                     value={form.caption}
                     onChange={(e) => setForm({ ...form, caption: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
                     placeholder="e.g. Lahore Billboard Campaign"
                   />
                 </div>
@@ -176,7 +176,7 @@ export default function MediaAdmin() {
                     type="number"
                     value={form.sort_order}
                     onChange={(e) => setForm({ ...form, sort_order: parseInt(e.target.value) || 0 })}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#2EAB8C] transition-all"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
                   />
                 </div>
 
@@ -184,7 +184,7 @@ export default function MediaAdmin() {
                   <button
                     type="submit"
                     disabled={saving}
-                    className="w-full bg-[#2EAB8C] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2"
+                    className="w-full bg-[#38BDF8] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2"
                   >
                     {saving ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
                     <span>Add to Showcase</span>
