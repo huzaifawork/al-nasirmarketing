@@ -25,7 +25,7 @@ export default function MediaAdmin() {
       .from("media_showcase")
       .select("*")
       .order("sort_order", { ascending: true });
-    if (!error && data) setItems(data);
+    if (!error && data) setItems(data as MediaItem[]);
     setLoading(false);
   }, []);
 
