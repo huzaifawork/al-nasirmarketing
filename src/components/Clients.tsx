@@ -21,8 +21,8 @@ const FEATURED_CLIENTS = [
   },
   {
     id: "f2",
-    name: "Huawei",
-    logo_url: "/featured-items-logos/huawei-logo-png-6990.png",
+    name: "Vital Tea",
+    logo_url: "/featured-items-logos/vital-tea.png",
     is_featured: true,
   },
   {
