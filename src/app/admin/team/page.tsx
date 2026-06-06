@@ -176,7 +176,7 @@ export default function TeamAdmin() {
       {/* Edit Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 overflow-y-auto">
+          <div className="fixed inset-0 z-50 overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -200,7 +200,7 @@ export default function TeamAdmin() {
                 </button>
               </div>
 
-              <form onSubmit={handleSave} className="p-5 space-y-4 overflow-y-auto">
+              <form onSubmit={handleSave} className="p-5 space-y-4 overflow-y-auto overscroll-contain">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Full Name</label>
