@@ -60,7 +60,7 @@ export default function CityPresencePage() {
       const { data: imgData } = await supabase
         .from("presence_images").select("*").eq("city_id", cityData.id)
         .order("sort_order", { ascending: true });
-      if (imgData) setImages(imgData);
+      if (imgData) setImages(imgData as unknown as PresenceImage[]);
       setLoading(false);
     }
     fetchData();
