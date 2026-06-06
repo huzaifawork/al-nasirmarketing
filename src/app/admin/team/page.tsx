@@ -83,10 +83,11 @@ export default function TeamAdmin() {
 
   const getDeptColor = (dept: string) => {
     switch (dept) {
-      case 'Leadership': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
-      case 'Creative': return 'bg-[#38BDF8]/20 text-[#38BDF8] border-[#38BDF8]/30';
-      case 'Digital': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-      default: return 'bg-white/10 text-gray-400 border-white/5';
+      case 'Finance':    return 'bg-emerald-500/30 text-emerald-300 border-emerald-500/40';
+      case 'Marketing':  return 'bg-[#38BDF8]/30 text-[#7dd9fc] border-[#38BDF8]/40';
+      case 'Execution':  return 'bg-orange-500/30 text-orange-300 border-orange-500/40';
+      case 'Management': return 'bg-purple-500/30 text-purple-300 border-purple-500/40';
+      default:           return 'bg-white/10 text-gray-300 border-white/20';
     }
   };
 
@@ -99,7 +100,7 @@ export default function TeamAdmin() {
         </div>
         <button 
           onClick={() => {
-            setEditingMember({ name: '', role: '', department: 'Leadership', sort_order: 0 });
+            setEditingMember({ name: '', role: '', department: 'Management', sort_order: 0 });
             setIsModalOpen(true);
           }}
           className="flex items-center gap-2 bg-[#38BDF8] hover:bg-[#258f75] text-white px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(56,189,248,0.2)]"
@@ -226,13 +227,14 @@ export default function TeamAdmin() {
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Department</label>
                     <select 
-                      value={editingMember?.department || 'Leadership'}
+                      value={editingMember?.department || 'Management'}
                       onChange={(e) => setEditingMember({ ...editingMember, department: e.target.value })}
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all appearance-none"
                     >
-                      <option value="Leadership">Leadership</option>
-                      <option value="Creative">Creative</option>
-                      <option value="Digital">Digital</option>
+                      <option value="Finance">Finance</option>
+                      <option value="Marketing">Marketing</option>
+                      <option value="Execution">Execution</option>
+                      <option value="Management">Management</option>
                     </select>
                   </div>
                   <div className="space-y-2">
