@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 
 import SiteShell from "@/components/SiteShell";
@@ -20,6 +20,20 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const syne = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+  weight: ["700", "800"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+  weight: ["300", "400"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Al-Nasir Advertising | Premium Outdoor & Digital Marketing Agency",
   description:
@@ -34,7 +48,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${dmSans.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[#0a1120] text-gray-100 selection:bg-[#38BDF8]/30 selection:text-white relative z-0 md:cursor-none">
         <SiteShell />

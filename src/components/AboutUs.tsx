@@ -457,13 +457,13 @@ export default function AboutUs() {
             </span>
           </div>
           <div className="flex flex-col gap-2 items-center">
-            <Counter from={0} to={15} suffix="+" />
+            <Counter from={0} to={35} suffix="+" />
             <span className="text-[9px] md:text-[10px] text-[#38BDF8] font-black uppercase tracking-[0.2em] text-center">
               Cities
             </span>
           </div>
           <div className="flex flex-col gap-2 items-center">
-            <Counter from={0} to={500} suffix="+" />
+            <Counter from={0} to={2500} suffix="+" />
             <span className="text-[9px] md:text-[10px] text-[#38BDF8] font-black uppercase tracking-[0.2em] text-center">
               Campaigns
             </span>

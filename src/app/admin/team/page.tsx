@@ -361,8 +361,7 @@ export default function TeamAdmin() {
                       <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 ml-1">
                         Fun Fact
                       </label>
-                      <input
-                        type="text"
+                      <textarea
                         value={editingMember?.fun_fact || ""}
                         onChange={(e) =>
                           setEditingMember({
@@ -370,7 +369,8 @@ export default function TeamAdmin() {
                             fun_fact: e.target.value,
                           })
                         }
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
+                        rows={2}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all resize-none"
                       />
                     </div>
                     <div className="space-y-2">

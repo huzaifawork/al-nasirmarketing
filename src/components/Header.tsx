@@ -24,7 +24,7 @@ const navLinks = [
     ],
   },
   { name: "Clients", href: "#clients" },
-  { name: "Presence", href: "#presence" },
+  { name: "Our Media", href: "#presence" },
   { name: "Team", href: "#team" },
 ];
 
@@ -59,8 +59,16 @@ export default function Header() {
         const el = document.getElementById(id);
         if (el && el.offsetTop <= scrollY) current = id;
       }
-      const link = navLinks.find((l) => l.href === `#${current}`);
-      setActiveLink(link ? link.name : current);
+      
+      // Map section ID to nav link name
+      if (current === "contact") {
+        setActiveLink("contact");
+      } else {
+        const link = navLinks.find((l) => l.href === `#${current}`);
+        if (link) {
+          setActiveLink(link.name);
+        }
+      }
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });

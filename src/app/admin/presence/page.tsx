@@ -19,6 +19,13 @@ type PresenceImage = {
   city_id: string;
   image_url: string;
   caption: string | null;
+  availability_from: string | null;
+  availability_to: string | null;
+  size: string | null;
+  price: number | null;
+  site_id: string | null;
+  location: string | null;
+  direction: string | null;
   sort_order: number;
 };
 
@@ -29,7 +36,18 @@ export default function PresenceAdmin() {
   const [expandedCity, setExpandedCity] = useState<string | null>(null);
   const [cityModal, setCityModal] = useState<Partial<City> | null>(null);
   const [imageModal, setImageModal] = useState<{ cityId: string; cityName: string } | null>(null);
-  const [imageForm, setImageForm] = useState({ image_url: "", caption: "", sort_order: 0 });
+  const [imageForm, setImageForm] = useState({ 
+    image_url: "", 
+    caption: "", 
+    availability_from: "", 
+    availability_to: "", 
+    size: "", 
+    price: "", 
+    site_id: "", 
+    location: "", 
+    direction: "", 
+    sort_order: 0 
+  });
   const [saving, setSaving] = useState(false);
 
   const fetchCities = useCallback(async () => {
@@ -40,7 +58,7 @@ export default function PresenceAdmin() {
   }, []);
 
   const fetchImages = useCallback(async (cityId: string) => {
-    const { data } = await supabase.from("presence_images").select("*").eq("city_id", cityId).order("sort_order", { ascending: true });
+    const { data } = await supabase.from("presence_images").select("*").eq("city_id", cityId).order("sort_order", { ascending: true }).order("created_at", { ascending: true });
     if (data) setImages((prev) => ({ ...prev, [cityId]: data as PresenceImage[] }));
   }, []);
 
@@ -77,9 +95,32 @@ export default function PresenceAdmin() {
     e.preventDefault();
     if (!imageModal || !imageForm.image_url) return;
     setSaving(true);
-    await supabase.from("presence_images").insert([{ city_id: imageModal.cityId, image_url: imageForm.image_url, caption: imageForm.caption || null, sort_order: imageForm.sort_order }]);
+    await supabase.from("presence_images").insert([{ 
+      city_id: imageModal.cityId, 
+      image_url: imageForm.image_url, 
+      caption: imageForm.caption || null, 
+      availability_from: imageForm.availability_from || null,
+      availability_to: imageForm.availability_to || null,
+      size: imageForm.size || null,
+      price: imageForm.price ? parseFloat(imageForm.price) : null,
+      site_id: imageForm.site_id || null,
+      location: imageForm.location || null,
+      direction: imageForm.direction || null,
+      sort_order: imageForm.sort_order 
+    }]);
     setImageModal(null);
-    setImageForm({ image_url: "", caption: "", sort_order: 0 });
+    setImageForm({ 
+      image_url: "", 
+      caption: "", 
+      availability_from: "", 
+      availability_to: "", 
+      size: "", 
+      price: "", 
+      site_id: "", 
+      location: "", 
+      direction: "", 
+      sort_order: 0 
+    });
     fetchImages(imageModal.cityId);
     setSaving(false);
   };
@@ -256,31 +297,71 @@ export default function PresenceAdmin() {
         {imageModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setImageModal(null)} className="absolute inset-0 bg-black/80 backdrop-blur-md" />
-            <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} className="relative w-full max-w-lg bg-[#0d1627] border border-white/10 rounded-3xl shadow-2xl overflow-hidden">
-              <div className="p-8 border-b border-white/5 flex justify-between items-center bg-[#121d36]">
-                <h2 className="text-2xl font-black uppercase tracking-tighter">Add Image — {imageModal.cityName}</h2>
-                <button onClick={() => setImageModal(null)} className="text-gray-400 hover:text-white transition-colors"><X size={24} /></button>
+            <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} className="relative w-full max-w-2xl bg-[#0d1627] border border-white/10 rounded-3xl shadow-2xl max-h-[90vh] flex flex-col">
+              <div className="p-8 border-b border-white/5 flex justify-between items-center bg-[#121d36] rounded-t-3xl shrink-0">
+                <h2 className="text-2xl font-black uppercase tracking-tighter">Add Media — {imageModal.cityName}</h2>
+                <button type="button" onClick={() => setImageModal(null)} className="text-gray-400 hover:text-white transition-colors"><X size={24} /></button>
               </div>
-              <form onSubmit={handleAddImage} className="p-8 space-y-5">
-                <ImageUpload
-                  value={imageForm.image_url}
-                  onChange={(url) => setImageForm({ ...imageForm, image_url: url })}
-                  folder="presence"
-                  label="Image"
-                />
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Caption (Optional)</label>
-                  <input type="text" value={imageForm.caption} onChange={(e) => setImageForm({ ...imageForm, caption: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" placeholder="e.g. Liberty Roundabout Billboard" />
-                </div>
-                <div className="space-y-2 w-32">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Sort Order</label>
-                  <input type="number" value={imageForm.sort_order} onChange={(e) => setImageForm({ ...imageForm, sort_order: parseInt(e.target.value) || 0 })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" />
-                </div>
-                <button type="submit" disabled={saving} className="w-full bg-[#38BDF8] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
-                  {saving ? <Loader2 className="animate-spin" size={18} /> : <ImageIcon size={18} />}
-                  Add Image
-                </button>
-              </form>
+              <div className="overflow-y-auto flex-1" data-lenis-prevent>
+                <form onSubmit={handleAddImage} className="p-8 space-y-5">
+                  <ImageUpload
+                    value={imageForm.image_url}
+                    onChange={(url) => setImageForm({ ...imageForm, image_url: url })}
+                    folder="presence"
+                    label="Site Image"
+                  />
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Caption / Description</label>
+                    <input type="text" value={imageForm.caption} onChange={(e) => setImageForm({ ...imageForm, caption: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" placeholder="e.g. Liberty Roundabout Billboard" />
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Available From</label>
+                      <input type="date" value={imageForm.availability_from} onChange={(e) => setImageForm({ ...imageForm, availability_from: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Available To</label>
+                      <input type="date" value={imageForm.availability_to} onChange={(e) => setImageForm({ ...imageForm, availability_to: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Size</label>
+                      <input type="text" value={imageForm.size} onChange={(e) => setImageForm({ ...imageForm, size: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" placeholder="e.g. 20x40 ft" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Price</label>
+                      <input type="number" step="0.01" value={imageForm.price} onChange={(e) => setImageForm({ ...imageForm, price: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" placeholder="e.g. 150000" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Site ID</label>
+                    <input type="text" value={imageForm.site_id} onChange={(e) => setImageForm({ ...imageForm, site_id: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" placeholder="e.g. LHR-001" />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Location</label>
+                    <textarea value={imageForm.location} onChange={(e) => setImageForm({ ...imageForm, location: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all resize-none" rows={2} placeholder="e.g. M.M Alam Road" />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Direction</label>
+                    <textarea value={imageForm.direction} onChange={(e) => setImageForm({ ...imageForm, direction: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all resize-none" rows={2} placeholder="e.g. North, East-bound, etc." />
+                  </div>
+
+                  <div className="space-y-2 w-32">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Sort Order</label>
+                    <input type="number" value={imageForm.sort_order} onChange={(e) => setImageForm({ ...imageForm, sort_order: parseInt(e.target.value) || 0 })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" />
+                  </div>
+                  <button type="submit" disabled={saving} className="w-full bg-[#38BDF8] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
+                    {saving ? <Loader2 className="animate-spin" size={18} /> : <ImageIcon size={18} />}
+                    Add Media
+                  </button>
+                </form>
+              </div>
             </motion.div>
           </div>
         )}
