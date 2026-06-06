@@ -1,10 +1,20 @@
 "use client";
-import React, { useEffect, useState, useCallback } from 'react';
-import { supabase } from '@/lib/supabase';
-import { Plus, UserCircle, Trash2, Edit3, Loader2, X, Save, Quote, Mail } from 'lucide-react';
-import ImageUpload from '@/components/ImageUpload';
-import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '@/lib/utils';
+import React, { useEffect, useState, useCallback } from "react";
+import { supabase } from "@/lib/supabase";
+import {
+  Plus,
+  UserCircle,
+  Trash2,
+  Edit3,
+  Loader2,
+  X,
+  Save,
+  Quote,
+  Mail,
+} from "lucide-react";
+import ImageUpload from "@/components/ImageUpload";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 type TeamMember = {
   id: string;
@@ -21,17 +31,18 @@ type TeamMember = {
 export default function TeamAdmin() {
   const [team, setTeam] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState(true);
-  const [editingMember, setEditingMember] = useState<Partial<TeamMember> | null>(null);
+  const [editingMember, setEditingMember] =
+    useState<Partial<TeamMember> | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [saving, setSaving] = useState(false);
 
   const fetchTeam = useCallback(async () => {
     setLoading(true);
     const { data, error } = await supabase
-      .from('team_members')
-      .select('*')
-      .order('sort_order', { ascending: true });
-    
+      .from("team_members")
+      .select("*")
+      .order("sort_order", { ascending: true });
+
     if (!error && data) setTeam(data as TeamMember[]);
     setLoading(false);
   }, []);
@@ -42,29 +53,32 @@ export default function TeamAdmin() {
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!editingMember?.name || !editingMember?.role || !editingMember?.department) return;
+    if (
+      !editingMember?.name ||
+      !editingMember?.role ||
+      !editingMember?.department
+    )
+      return;
 
     setSaving(true);
     const memberData = {
       name: editingMember.name,
       role: editingMember.role,
       department: editingMember.department,
-      photo_url: editingMember.photo_url || '',
-      quote: editingMember.quote || '',
-      fun_fact: editingMember.fun_fact || '',
-      sort_order: editingMember.sort_order || 0
+      photo_url: editingMember.photo_url || "",
+      quote: editingMember.quote || "",
+      fun_fact: editingMember.fun_fact || "",
+      sort_order: editingMember.sort_order || 0,
     };
 
     let error;
     if (editingMember.id) {
       ({ error } = await supabase
-        .from('team_members')
+        .from("team_members")
         .update(memberData)
-        .eq('id', editingMember.id));
+        .eq("id", editingMember.id));
     } else {
-      ({ error } = await supabase
-        .from('team_members')
-        .insert([memberData]));
+      ({ error } = await supabase.from("team_members").insert([memberData]));
     }
 
     if (!error) {
@@ -76,18 +90,23 @@ export default function TeamAdmin() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure?')) return;
-    const { error } = await supabase.from('team_members').delete().eq('id', id);
+    if (!confirm("Are you sure?")) return;
+    const { error } = await supabase.from("team_members").delete().eq("id", id);
     if (!error) fetchTeam();
   };
 
   const getDeptColor = (dept: string) => {
     switch (dept) {
-      case 'Finance':    return 'bg-emerald-500/30 text-emerald-300 border-emerald-500/40';
-      case 'Marketing':  return 'bg-[#38BDF8]/30 text-[#7dd9fc] border-[#38BDF8]/40';
-      case 'Execution':  return 'bg-orange-500/30 text-orange-300 border-orange-500/40';
-      case 'Management': return 'bg-purple-500/30 text-purple-300 border-purple-500/40';
-      default:           return 'bg-white/10 text-gray-300 border-white/20';
+      case "Finance":
+        return "bg-blue-500/20 text-blue-300 border-blue-500/30";
+      case "Marketing":
+        return "bg-[#38BDF8]/20 text-[#38BDF8] border-[#38BDF8]/30";
+      case "Execution":
+        return "bg-yellow-500/20 text-yellow-300 border-yellow-500/30";
+      case "Management":
+        return "bg-purple-500/20 text-purple-300 border-purple-500/30";
+      default:
+        return "bg-white/10 text-gray-300 border-white/5";
     }
   };
 
@@ -95,12 +114,21 @@ export default function TeamAdmin() {
     <div className="space-y-10">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <h1 className="text-4xl font-black uppercase tracking-tighter mb-2">Team Showcase</h1>
-          <p className="text-gray-400 text-sm font-medium tracking-wide">Manage agency personnel and leadership profiles.</p>
+          <h1 className="text-4xl font-black uppercase tracking-tighter mb-2">
+            Team Showcase
+          </h1>
+          <p className="text-gray-400 text-sm font-medium tracking-wide">
+            Manage agency personnel and leadership profiles.
+          </p>
         </div>
-        <button 
+        <button
           onClick={() => {
-            setEditingMember({ name: '', role: '', department: 'Management', sort_order: 0 });
+            setEditingMember({
+              name: "",
+              role: "",
+              department: "Finance",
+              sort_order: 0,
+            });
             setIsModalOpen(true);
           }}
           className="flex items-center gap-2 bg-[#38BDF8] hover:bg-[#258f75] text-white px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(56,189,248,0.2)]"
@@ -123,7 +151,7 @@ export default function TeamAdmin() {
               className="bg-white/[0.03] border border-white/10 rounded-3xl p-8 group hover:border-[#38BDF8]/30 transition-all flex flex-col items-center text-center relative overflow-hidden"
             >
               <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button 
+                <button
                   onClick={() => {
                     setEditingMember(member);
                     setIsModalOpen(true);
@@ -132,7 +160,7 @@ export default function TeamAdmin() {
                 >
                   <Edit3 size={16} />
                 </button>
-                <button 
+                <button
                   onClick={() => handleDelete(member.id)}
                   className="p-2 bg-[#121d36] hover:bg-red-500 text-white rounded-lg transition-colors shadow-xl"
                 >
@@ -142,7 +170,11 @@ export default function TeamAdmin() {
 
               <div className="w-24 h-24 rounded-full border-2 border-[#38BDF8] p-1 mb-6 relative overflow-hidden">
                 {member.photo_url ? (
-                  <img src={member.photo_url} alt={member.name} className="w-full h-full object-cover rounded-full" />
+                  <img
+                    src={member.photo_url}
+                    alt={member.name}
+                    className="w-full h-full object-cover rounded-full"
+                  />
                 ) : (
                   <div className="w-full h-full bg-white/5 rounded-full flex items-center justify-center text-gray-700">
                     <UserCircle size={48} />
@@ -150,19 +182,28 @@ export default function TeamAdmin() {
                 )}
               </div>
 
-              <h3 className="text-xl font-black text-white uppercase tracking-tight mb-1">{member.name}</h3>
-              <p className="text-[#38BDF8] text-[10px] font-black uppercase tracking-[0.2em] mb-4">{member.role}</p>
+              <h3 className="text-xl font-black text-white uppercase tracking-tight mb-1">
+                {member.name}
+              </h3>
+              <p className="text-[#38BDF8] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
+                {member.role}
+              </p>
 
-              <span className={cn(
-                "px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-[0.2em] border mb-6",
-                getDeptColor(member.department)
-              )}>
+              <span
+                className={cn(
+                  "px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-[0.2em] border mb-6",
+                  getDeptColor(member.department),
+                )}
+              >
                 {member.department}
               </span>
 
               {member.quote && (
                 <div className="relative pt-6 border-t border-white/5 w-full">
-                  <Quote size={16} className="text-[#38BDF8] absolute top-[-8px] left-1/2 -translate-x-1/2 bg-[#0d1627] px-1" />
+                  <Quote
+                    size={16}
+                    className="text-[#38BDF8] absolute top-[-8px] left-1/2 -translate-x-1/2 bg-[#0d1627] px-1"
+                  />
                   <p className="text-gray-400 text-xs italic leading-relaxed line-clamp-2">
                     &quot;{member.quote}&quot;
                   </p>
@@ -176,134 +217,199 @@ export default function TeamAdmin() {
       {/* Edit Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
-            <motion.div 
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="fixed inset-0 bg-black/80 backdrop-blur-md"
+              className="absolute inset-0 bg-black/80 backdrop-blur-md"
             />
-            <div className="relative min-h-full flex items-center justify-center p-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-lg bg-[#0d1627] border border-white/10 rounded-3xl shadow-2xl flex flex-col max-h-[85vh] my-8"
+              className="relative w-full max-w-2xl bg-[#0d1627] border border-white/10 rounded-3xl shadow-2xl max-h-[90vh] flex flex-col"
+              onClick={(e) => e.stopPropagation()}
             >
-              <div className="p-5 border-b border-white/5 flex justify-between items-center bg-[#121d36] rounded-t-3xl shrink-0">
-                <h2 className="text-base font-black uppercase tracking-tighter">
-                  {editingMember?.id ? 'Edit Member' : 'Add New Member'}
+              <div className="p-8 border-b border-white/5 flex justify-between items-center bg-[#121d36] rounded-t-3xl shrink-0">
+                <h2 className="text-2xl font-black uppercase tracking-tighter">
+                  {editingMember?.id ? "Edit Member" : "Add New Member"}
                 </h2>
-                <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-white transition-colors">
-                  <X size={18} />
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <X size={24} />
                 </button>
               </div>
 
-              <form onSubmit={handleSave} className="p-5 space-y-4 overflow-y-auto overscroll-contain">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Full Name</label>
-                    <input 
-                      type="text" 
-                      value={editingMember?.name || ''}
-                      onChange={(e) => setEditingMember({ ...editingMember, name: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Position / Role</label>
-                    <input 
-                      type="text" 
-                      value={editingMember?.role || ''}
-                      onChange={(e) => setEditingMember({ ...editingMember, role: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Department</label>
-                    <select 
-                      value={editingMember?.department || 'Management'}
-                      onChange={(e) => setEditingMember({ ...editingMember, department: e.target.value })}
-                      className="w-full bg-[#0d1627] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
-                    >
-                      <option value="Finance" className="bg-[#0d1627] text-white">Finance</option>
-                      <option value="Marketing" className="bg-[#0d1627] text-white">Marketing</option>
-                      <option value="Execution" className="bg-[#0d1627] text-white">Execution</option>
-                      <option value="Management" className="bg-[#0d1627] text-white">Management</option>
-                    </select>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Email Address</label>
-                    <div className="relative">
-                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={16} />
-                      <input 
-                        type="email" 
-                        value={editingMember?.email || ''}
-                        onChange={(e) => setEditingMember({ ...editingMember, email: e.target.value })}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
-                        placeholder="member@alnasir.pk"
+              <div className="overflow-y-auto flex-1" data-lenis-prevent>
+                <form onSubmit={handleSave} className="p-8 space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 ml-1">
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        value={editingMember?.name || ""}
+                        onChange={(e) =>
+                          setEditingMember({
+                            ...editingMember,
+                            name: e.target.value,
+                          })
+                        }
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 ml-1">
+                        Position / Role
+                      </label>
+                      <input
+                        type="text"
+                        value={editingMember?.role || ""}
+                        onChange={(e) =>
+                          setEditingMember({
+                            ...editingMember,
+                            role: e.target.value,
+                          })
+                        }
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
+                        required
                       />
                     </div>
                   </div>
-                </div>
 
-                <ImageUpload
-                  value={editingMember?.photo_url || ''}
-                  onChange={(url) => setEditingMember({ ...editingMember, photo_url: url })}
-                  folder="team"
-                  label="Photo"
-                />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 ml-1">
+                        Department
+                      </label>
+                      <select
+                        value={editingMember?.department || "Finance"}
+                        onChange={(e) =>
+                          setEditingMember({
+                            ...editingMember,
+                            department: e.target.value,
+                          })
+                        }
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all appearance-none [&>option]:bg-[#0d1627] [&>option]:text-white"
+                      >
+                        <option value="Finance">Finance</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Execution">Execution</option>
+                        <option value="Management">Management</option>
+                      </select>
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 ml-1">
+                        Email Address
+                      </label>
+                      <div className="relative">
+                        <Mail
+                          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
+                          size={16}
+                        />
+                        <input
+                          type="email"
+                          value={editingMember?.email || ""}
+                          onChange={(e) =>
+                            setEditingMember({
+                              ...editingMember,
+                              email: e.target.value,
+                            })
+                          }
+                          className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
+                          placeholder="member@alnasir.pk"
+                        />
+                      </div>
+                    </div>
+                  </div>
 
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Personal Quote</label>
-                  <textarea 
-                    value={editingMember?.quote || ''}
-                    onChange={(e) => setEditingMember({ ...editingMember, quote: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all min-h-[100px]"
-                    placeholder="A short motto or quote..."
+                  <ImageUpload
+                    value={editingMember?.photo_url || ""}
+                    onChange={(url) =>
+                      setEditingMember({ ...editingMember, photo_url: url })
+                    }
+                    folder="team"
+                    label="Photo"
                   />
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Fun Fact</label>
-                    <input 
-                      type="text" 
-                      value={editingMember?.fun_fact || ''}
-                      onChange={(e) => setEditingMember({ ...editingMember, fun_fact: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 ml-1">
+                      Personal Quote
+                    </label>
+                    <textarea
+                      value={editingMember?.quote || ""}
+                      onChange={(e) =>
+                        setEditingMember({
+                          ...editingMember,
+                          quote: e.target.value,
+                        })
+                      }
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all min-h-[100px]"
+                      placeholder="A short motto or quote..."
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Sort Order</label>
-                    <input 
-                      type="number" 
-                      value={editingMember?.sort_order || 0}
-                      onChange={(e) => setEditingMember({ ...editingMember, sort_order: parseInt(e.target.value) })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
-                    />
-                  </div>
-                </div>
 
-                <div className="pt-4 flex gap-4">
-                  <button
-                    type="submit"
-                    disabled={saving}
-                    className="flex-1 bg-[#38BDF8] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2"
-                  >
-                    {saving ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
-                    <span>{editingMember?.id ? 'Update Member' : 'Add to Team'}</span>
-                  </button>
-                </div>
-              </form>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 ml-1">
+                        Fun Fact
+                      </label>
+                      <input
+                        type="text"
+                        value={editingMember?.fun_fact || ""}
+                        onChange={(e) =>
+                          setEditingMember({
+                            ...editingMember,
+                            fun_fact: e.target.value,
+                          })
+                        }
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 ml-1">
+                        Sort Order
+                      </label>
+                      <input
+                        type="number"
+                        value={editingMember?.sort_order || 0}
+                        onChange={(e) =>
+                          setEditingMember({
+                            ...editingMember,
+                            sort_order: parseInt(e.target.value),
+                          })
+                        }
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-4 flex gap-4">
+                    <button
+                      type="submit"
+                      disabled={saving}
+                      className="flex-1 bg-[#38BDF8] hover:bg-[#258f75] disabled:opacity-50 text-white font-black uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2"
+                    >
+                      {saving ? (
+                        <Loader2 className="animate-spin" size={18} />
+                      ) : (
+                        <Save size={18} />
+                      )}
+                      <span>
+                        {editingMember?.id ? "Update Member" : "Add to Team"}
+                      </span>
+                    </button>
+                  </div>
+                </form>
+              </div>
             </motion.div>
-            </div>
           </div>
         )}
       </AnimatePresence>

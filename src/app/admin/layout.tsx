@@ -67,7 +67,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   return (
-    <div className="min-h-screen bg-[#050a15] flex text-white relative">
+    <div className="min-h-screen bg-[#050a15] flex text-white relative overflow-hidden">
       {/* Global Admin Background Decor */}
       <div className="fixed top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[#496B88]/10 via-transparent to-transparent pointer-events-none" />
       <div className="fixed bottom-0 left-0 w-[600px] h-[600px] bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-[#38BDF8]/10 via-transparent to-transparent pointer-events-none" />
@@ -149,7 +149,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 min-w-0 flex flex-col overflow-visible relative z-10">
+      <main className="flex-1 min-w-0 flex flex-col overflow-hidden relative z-10">
         {/* Header (Mobile Toggle) */}
         <header className="lg:hidden p-4 border-b border-white/5 flex items-center justify-between bg-[#0a1120]/80 backdrop-blur-xl z-20">
           <Link href="/admin" className="relative w-28 h-8 block">
