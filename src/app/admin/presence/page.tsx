@@ -59,7 +59,7 @@ export default function PresenceAdmin() {
 
   const fetchImages = useCallback(async (cityId: string) => {
     const { data } = await supabase.from("presence_images").select("*").eq("city_id", cityId).order("sort_order", { ascending: true }).order("created_at", { ascending: true });
-    if (data) setImages((prev) => ({ ...prev, [cityId]: data as PresenceImage[] }));
+    if (data) setImages((prev) => ({ ...prev, [cityId]: data as unknown as PresenceImage[] }));
   }, []);
 
   useEffect(() => { fetchCities(); }, [fetchCities]);
