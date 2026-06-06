@@ -176,21 +176,21 @@ export default function TeamAdmin() {
       {/* Edit Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+              className="fixed inset-0 bg-black/80 backdrop-blur-md"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl bg-[#0d1627] border border-white/10 rounded-3xl shadow-2xl flex flex-col max-h-[90vh]"
+              className="relative w-full max-w-2xl bg-[#0d1627] border border-white/10 rounded-3xl shadow-2xl my-auto"
             >
-              <div className="p-8 border-b border-white/5 flex justify-between items-center bg-[#121d36] rounded-t-3xl shrink-0">
+              <div className="p-8 border-b border-white/5 flex justify-between items-center bg-[#121d36] rounded-t-3xl">
                 <h2 className="text-2xl font-black uppercase tracking-tighter">
                   {editingMember?.id ? 'Edit Member' : 'Add New Member'}
                 </h2>
@@ -199,7 +199,7 @@ export default function TeamAdmin() {
                 </button>
               </div>
 
-              <form onSubmit={handleSave} className="p-8 space-y-6 overflow-y-auto flex-1">
+              <form onSubmit={handleSave} className="p-8 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Full Name</label>
@@ -229,12 +229,12 @@ export default function TeamAdmin() {
                     <select 
                       value={editingMember?.department || 'Management'}
                       onChange={(e) => setEditingMember({ ...editingMember, department: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all appearance-none"
+                      className="w-full bg-[#0d1627] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
                     >
-                      <option value="Finance">Finance</option>
-                      <option value="Marketing">Marketing</option>
-                      <option value="Execution">Execution</option>
-                      <option value="Management">Management</option>
+                      <option value="Finance" className="bg-[#0d1627] text-white">Finance</option>
+                      <option value="Marketing" className="bg-[#0d1627] text-white">Marketing</option>
+                      <option value="Execution" className="bg-[#0d1627] text-white">Execution</option>
+                      <option value="Management" className="bg-[#0d1627] text-white">Management</option>
                     </select>
                   </div>
                   <div className="space-y-2">
