@@ -107,7 +107,7 @@ export default function PresenceAdmin() {
       location: imageForm.location || null,
       direction: imageForm.direction || null,
       sort_order: imageForm.sort_order 
-    }]);
+    } as any]);
     setImageModal(null);
     setImageForm({ 
       image_url: "", 
