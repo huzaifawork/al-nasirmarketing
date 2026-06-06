@@ -318,11 +318,31 @@ export default function PresenceAdmin() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Available From</label>
-                      <input type="date" value={imageForm.availability_from} onChange={(e) => setImageForm({ ...imageForm, availability_from: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" />
+                      <input
+                        type="date"
+                        value={imageForm.availability_from}
+                        min={new Date().toISOString().split('T')[0]}
+                        onChange={(e) => setImageForm({
+                          ...imageForm,
+                          availability_from: e.target.value,
+                          availability_to: imageForm.availability_to && imageForm.availability_to <= e.target.value ? '' : imageForm.availability_to
+                        })}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all"
+                      />
                     </div>
                     <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Available To</label>
-                      <input type="date" value={imageForm.availability_to} onChange={(e) => setImageForm({ ...imageForm, availability_to: e.target.value })} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all" />
+                      <input
+                        type="date"
+                        value={imageForm.availability_to}
+                        min={imageForm.availability_from ? (() => { const d = new Date(imageForm.availability_from); d.setDate(d.getDate() + 1); return d.toISOString().split('T')[0]; })() : new Date().toISOString().split('T')[0]}
+                        onChange={(e) => setImageForm({ ...imageForm, availability_to: e.target.value })}
+                        disabled={!imageForm.availability_from}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38BDF8] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                      />
+                      {!imageForm.availability_from && (
+                        <p className="text-[10px] text-gray-500 mt-1">Set &quot;Available From&quot; first</p>
+                      )}
                     </div>
                   </div>
 

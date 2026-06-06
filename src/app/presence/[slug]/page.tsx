@@ -158,7 +158,7 @@ export default function CityPresencePage() {
 
                     {/* Availability pill */}
                     {(img.availability_from || img.availability_to) && (
-                      <div className="absolute bottom-2.5 right-2.5 bg-emerald-500/15 border border-emerald-500/35 text-emerald-300 px-2.5 py-1 rounded-full text-[9px] tracking-wide">
+                      <div className="absolute bottom-2.5 right-2.5 bg-[#0d1627]/90 backdrop-blur-sm border border-emerald-500/40 text-emerald-300 px-2.5 py-1 rounded-full text-[9px] font-medium tracking-wide">
                         {img.availability_from && formatDateShort(img.availability_from)}
                         {img.availability_from && img.availability_to && " – "}
                         {img.availability_to && formatDateShort(img.availability_to)}
