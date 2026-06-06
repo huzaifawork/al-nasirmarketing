@@ -66,7 +66,7 @@ const services: Service[] = [
     title: "AI-Driven Marketing Strategies",
     description:
       "Leveraging AI tools for ad creative generation, audience segmentation, predictive analytics, chatbot automation, and performance optimization.",
-    image: "/service-images/ai-driven.jpg",
+    image: "/service-images/ai-driven.png",
     color: "from-[#1B2A4A] to-[#121d36]",
   },
 ];
@@ -86,9 +86,13 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         zIndex: index + 1,
       }}
     >
-      <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-95`} />
+      <div
+        className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-95`}
+      />
 
-      <div className={`relative z-10 flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}>
+      <div
+        className={`relative z-10 flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}
+      >
         {/* Image first on mobile */}
         <div className="w-full md:w-1/2 relative h-52 sm:h-64 md:min-h-[420px] overflow-hidden order-first md:order-none">
           <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-l from-transparent via-transparent to-[#121d36]/60 z-10 pointer-events-none" />
@@ -115,7 +119,10 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           </p>
           <button className="group/btn flex items-center gap-3 text-white font-bold text-xs uppercase tracking-[0.15em] hover:text-[#38BDF8] transition-colors w-fit">
             Discover More
-            <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform duration-300" />
+            <ArrowRight
+              size={16}
+              className="group-hover/btn:translate-x-2 transition-transform duration-300"
+            />
           </button>
         </div>
       </div>
