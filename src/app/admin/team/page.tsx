@@ -176,7 +176,7 @@ export default function TeamAdmin() {
       {/* Edit Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="fixed inset-0 z-50 overflow-y-auto">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -184,22 +184,23 @@ export default function TeamAdmin() {
               onClick={() => setIsModalOpen(false)}
               className="fixed inset-0 bg-black/80 backdrop-blur-md"
             />
+            <div className="relative min-h-full flex items-center justify-center p-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl bg-[#0d1627] border border-white/10 rounded-3xl shadow-2xl my-auto"
+              className="relative w-full max-w-lg bg-[#0d1627] border border-white/10 rounded-3xl shadow-2xl flex flex-col max-h-[85vh] my-8"
             >
-              <div className="p-8 border-b border-white/5 flex justify-between items-center bg-[#121d36] rounded-t-3xl">
-                <h2 className="text-2xl font-black uppercase tracking-tighter">
+              <div className="p-5 border-b border-white/5 flex justify-between items-center bg-[#121d36] rounded-t-3xl shrink-0">
+                <h2 className="text-base font-black uppercase tracking-tighter">
                   {editingMember?.id ? 'Edit Member' : 'Add New Member'}
                 </h2>
                 <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-white transition-colors">
-                  <X size={24} />
+                  <X size={18} />
                 </button>
               </div>
 
-              <form onSubmit={handleSave} className="p-8 space-y-6">
+              <form onSubmit={handleSave} className="p-5 space-y-4 overflow-y-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 ml-1">Full Name</label>
@@ -302,6 +303,7 @@ export default function TeamAdmin() {
                 </div>
               </form>
             </motion.div>
+            </div>
           </div>
         )}
       </AnimatePresence>
